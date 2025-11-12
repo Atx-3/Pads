@@ -31,13 +31,13 @@
         }
 
         /* Section min-height for better spacing */
-        section {
+        section:not(#home) {
             min-height: 80vh;
             padding-top: 100px; /* Offset for sticky header */
             padding-bottom: 4rem;
         }
         @media (min-width: 1024px) {
-            section {
+            section:not(#home) {
                 padding-top: 120px;
                 padding-bottom: 6rem;
             }
@@ -104,6 +104,44 @@
             background-color: rgba(140, 31, 45, 0.05); /* Light maroon bg */
         }
 
+        /* Hero section specific background */
+        #home {
+            padding-top: 0;
+            padding-bottom: 0;
+            min-height: 100vh;
+            background-image: url('image_72e9f4.png');
+            background-size: cover;
+            background-position: center;
+            display: flex; /* Using flex to position scroll arrow */
+            align-items: flex-end;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* Ensure content stays on top of the background image */
+        #home > .container {
+            position: relative;
+            z-index: 1; 
+        }
+
+        /* Add animation for scroll arrow */
+        @keyframes bounce-arrow {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-20px);
+            }
+            60% {
+                transform: translateY(-10px);
+            }
+        }
+        .scroll-arrow {
+            animation: bounce-arrow 2s infinite;
+            color: #8C1F2D; /* brand-maroon */
+        }
+
     </style>
 </head>
 <body class="bg-brand-cream">
@@ -161,11 +199,26 @@
 
     <!-- MAIN CONTENT --><main>
 
-        <!-- SECTION 1: HERO (Page 1) --><section id="home" class="flex items-center justify-center min-h-screen pt-16">
+        <!-- SECTION 1: HERO (Page 1) --><section id="home" class="flex items-center justify-center min-h-screen">
+            <!-- Content removed as it is now in the background image -->
+            <!-- Scroll down indicator -->
+            <a href="#intro" class="scroll-arrow absolute bottom-10" aria-label="Scroll down">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+                </svg>
+            </a>
+        </section>
+
+        <!-- SECTION 2: INTRO (Original Page 1) --><section id="intro" class="flex items-center justify-center min-h-screen pt-16">
             <div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                    <!-- Image --><div class="flex justify-center">
+                        <img src="the front.png" 
+                             alt="Hand holding sanitary pad wrapper with text 'Your Ad Delivers Dignity'"
+                             class="rounded-2xl shadow-2xl w-full max-w-md object-cover"
+                             onerror="this.src='https://placehold.co/500x500/FFFFFF/8C1F2D?text=Image+Placeholder&font=inter'">
+                    </div>
                     <!-- Text Content --><div class="text-center md:text-left">
-                        <span class="text-sm font-bold text-brand-maroon uppercase tracking-widest">P(ADS) — PADS FUNDED BY ADS</span>
                         <h1 class="mt-4 text-5xl lg:text-7xl font-extrabold text-brand-maroon leading-tight">
                             YOUR AD
                             <br>
@@ -180,29 +233,15 @@
                             Learn How It Works
                         </a>
                     </div>
-                    <!-- Image --><div class="flex justify-center">
-                        <!-- === IMAGE REPLACED === -->
-                        <img src="home image.png" 
-                             alt="Hand holding sanitary pad wrapper with text 'Your Ad Delivers Dignity'"
-                             class="rounded-2xl shadow-2xl w-full max-w-md object-cover"
-                             onerror="this.src='https://placehold.co/500x500/FFFFFF/8C1F2D?text=Image+Placeholder&font=inter'">
-                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- SECTION 2: THE PROBLEM (Page 2-4) --><section id="problem" class="bg-white">
+        <!-- SECTION 3: THE PROBLEM (Page 2-4) --><section id="problem" class="bg-white">
             <div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-                    <!-- Image --><div class="flex justify-center">
-                        <img src="image 2.png" 
-                             alt="Thoughtful profile of a woman"
-                             class="rounded-2xl shadow-xl w-full max-w-md object-cover"
-                             style="aspect-ratio: 4/5;"
-                             onerror="this.src='https://placehold.co/500x600/F0F0F0/8A796A?text=Image+Placeholder&font=inter'">
-                    </div>
-                    <!-- Stats & Text --><div class="text-left">
-                        <span class="text-sm font-bold text-brand-maroon uppercase tracking-widest">As you are reading this...</span>
+                <div class="grid grid-cols-1 gap-12 lg:gap-20 items-center">
+                    <!-- Stats & Text --><div class="text-center max-w-4xl mx-auto">
+                        <span class="text-lg font-bold text-brand-maroon uppercase tracking-widest">As you are reading this...</span>
                         
                         <div class="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-8">
                             <div class="bg-brand-cream p-6 rounded-xl shadow-md">
@@ -219,6 +258,15 @@
                         <p class="mt-6 text-xl text-gray-700">
                             If there are no pads, they make do. Toilet paper = Pads.
                         </p>
+
+                        <!-- Image --><div class="flex justify-center my-12">
+                            <img src="https://placehold.co/500x600/F0F0F0/8A796A?text=Image+Placeholder&font=inter" 
+                                 alt="Thoughtful profile of a woman"
+                                 class="rounded-2xl shadow-xl w-full max-w-md object-cover"
+                                 style="aspect-ratio: 4/5;"
+                                 onerror="this.src='https://placehold.co/500x600/F0F0F0/8A796A?text=Image+Placeholder&font=inter'">
+                        </div>
+                        
                         <p class="mt-4 text-3xl lg:text-4xl font-extrabold text-brand-maroon bg-brand-cream/60 p-4 rounded-lg inline-block">
                             Toilet paper isn't the solution,
                             <br>
@@ -229,12 +277,12 @@
             </div>
         </section>
 
-        <!-- SECTION 3: OUR SOLUTION (Page 5) --><section id="solution">
-            <div class="container mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 text-center">
+        <!-- SECTION 4: OUR SOLUTION (Page 5) --><section id="solution">
+            <div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
                 <h2 class="text-4xl lg:text-5xl font-extrabold text-brand-maroon">
                     We Solve For That <span class="text-brand-brown">ACCESS...</span>
                 </h2>
-                <p class="mt-6 text-2xl lg:text-3xl font-medium text-gray-700 max-w-3xl mx-auto">
+                <p class="mt-4 text-xl lg:text-2xl font-medium text-brand-brown max-w-3xl mx-auto">
                     By turning sanitary pad packaging into an advertisement space.
                 </p>
 
@@ -306,7 +354,7 @@
             <div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
                     <!-- Image --><div class="flex justify-center order-1 lg:order-2">
-                        <img src="ChatGPT Image Nov 12, 2025, 04_21_24 AM.png" 
+                        <img src="https://placehold.co/500x500/F0F0F0/333333?text=Image+Placeholder&font=inter" 
                              alt="Artistic collage of eyes, representing impressions"
                              class="rounded-2xl shadow-2xl w-full max-w-md object-cover"
                              style="aspect-ratio: 1/1;"
@@ -342,7 +390,7 @@
             <div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <!-- Part 1: Value Prop --><div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
                     <!-- Image --><div class="flex justify-center">
-                        <img src="Screenshot 2025-11-12 042229.png" 
+                        <img src="https://placehold.co/500x500/F0F0F0/8A796A?text=Image+Placeholder&font=inter" 
                              alt="Pad dispensers in a clean public washroom"
                              class="rounded-2xl shadow-2xl w-full max-w-md object-cover"
                              style="aspect-ratio: 1/1;"
@@ -368,29 +416,7 @@
                     </div>
                 </div>
 
-                <!-- Part 2: Logistics (Page 9) --><div class="mt-20 lg:mt-32 max-w-5xl mx-auto text-center">
-                    <h3 class="text-3xl lg:text-4xl font-bold text-brand-brown">
-                        Seamless Logistics, Full Control
-                    </h3>
-                    <div class="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                        <div class="bg-brand-cream p-6 rounded-xl shadow-lg">
-                            <h4 class="text-xl font-bold text-brand-maroon">CONSENT</h4>
-                            <p class="mt-2 text-gray-700 text-sm">Every campaign partner is disclosed upfront. No wrapper is placed without your approval.</p>
-                        </div>
-                        <div class="bg-brand-cream p-6 rounded-xl shadow-lg">
-                            <h4 class="text-xl font-bold text-brand-maroon">PLACEMENT</h4>
-                            <p class="mt-2 text-gray-700 text-sm">We supply branded pads, ready for distribution. Venues approve and provide the space.</p>
-                        </div>
-                        <div class="bg-brand-cream p-6 rounded-xl shadow-lg">
-                            <h4 class="text-xl font-bold text-brand-maroon">REFILL</h4>
-                            <p class="mt-2 text-gray-700 text-sm">A collaborative approach. We provide stock calculated against footfall and replenish as needed.</p>
-                        </div>
-                        <div class="bg-brand-cream p-6 rounded-xl shadow-lg">
-                            <h4 class="text-xl font-bold text-brand-maroon">REPORT</h4>
-                            <p class="mt-2 text-gray-700 text-sm">We track stock movement. Venues receive simple, transparent reporting to measure usage and impact.</p>
-                        </div>
-                    </div>
-                </div>
+                <!-- Part 2: Logistics (Page 9) -->
             </div>
         </section>
 
@@ -398,7 +424,7 @@
             <div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
                     <!-- Image --><div class="flex justify-center order-1 lg:order-2">
-                        <img src="image 5.png" 
+                        <img src="https://placehold.co/500x500/F0F0F0/8C1F2D?text=Image+Placeholder&font=inter" 
                              alt="Artistic graphic of a typewriter, representing storytelling"
                              class="rounded-2xl shadow-2xl w-full max-w-md object-cover"
                              style="aspect-ratio: 1/1;"
@@ -445,22 +471,19 @@
                 </div>
 
                 <!-- Social Media Icons (Example) --><div class="flex justify-center space-x-6 mt-12">
-                    <!-- NEW: Instagram Link -->
-                    <a href="https://www.instagram.com/projectqadira?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" class="text-brand-cream/70 hover:text-brand-cream transition-colors" aria-label="Instagram">
+                    <!-- NEW: Instagram Link --><a href="https://www.instagram.com/projectqadira?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" class="text-brand-cream/70 hover:text-brand-cream transition-colors" aria-label="Instagram">
                         <svg class="h-8 w-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
                             <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
                             <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
                         </svg>
                     </a>
-                    <!-- NEW: LinkedIn Link -->
-                    <a href="https://www.linkedin.com/company/project-qadira/?originalSubdomain=in" target="_blank" rel="noopener noreferrer" class="text-brand-cream/70 hover:text-brand-cream transition-colors" aria-label="LinkedIn">
+                    <!-- NEW: LinkedIn Link --><a href="https://www.linkedin.com/company/project-qadira/?originalSubdomain=in" target="_blank" rel="noopener noreferrer" class="text-brand-cream/70 hover:text-brand-cream transition-colors" aria-label="LinkedIn">
                         <svg class="h-8 w-8" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
                         </svg>
                     </a>
-                    <!-- NEW: Mail Link -->
-                    <a href="mailto:projectqadira2020@gmail.com" class="text-brand-cream/70 hover:text-brand-cream transition-colors" aria-label="Email">
+                    <!-- NEW: Mail Link --><a href="mailto:projectqadira2020@gmail.com" class="text-brand-cream/70 hover:text-brand-cream transition-colors" aria-label="Email">
                         <svg class="h-8 w-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
                         </svg>
@@ -518,7 +541,9 @@
 
             // Add padding to the top of the main content to offset the fixed header
             // This is crucial for the first section (#home)
+            /* This line is no longer needed as the hero section is a full background
             main.style.paddingTop = headerHeight + 'px';
+            */
 
             window.addEventListener('scroll', () => {
                 const scrollPosition = window.scrollY;
