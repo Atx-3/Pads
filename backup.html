@@ -8,7 +8,6 @@
     <!-- Google Font: Inter --><link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
-    
     <style>
         /* Define custom styles */
         body {
@@ -18,9 +17,8 @@
         }
         /* Custom colors for Tailwind */
         .bg-brand-cream { background-color: #FDF8EE; }
-        .bg-brand-maroon { background-color: #8C1F2D; } 
-        .bg-brand-dark-red { background-color: #450a0a; } /* New Dark Red */
-        .bg-brand-brown { background-color: #8A796A; } 
+        .bg-brand-maroon { background-color: #8C1F2D; }
+        .bg-brand-brown { background-color: #8A796A; }
         .text-brand-maroon { color: #8C1F2D; }
         .text-brand-brown { color: #8A796A; }
         .text-brand-cream { color: #FDF8EE; }
@@ -44,7 +42,7 @@
                 padding-bottom: 6rem;
             }
         }
-         /* Simple pulse animation for hero button */
+        /* Simple pulse animation for hero button */
         .pulse-light {
             box-shadow: 0 0 0 0 rgba(140, 31, 45, 0.7);
             animation: pulse-light 2s infinite;
@@ -72,7 +70,6 @@
             width: auto;
             display: block; /* Remove extra space below SVG */
         }
-
 
         /* Underline animation and Active link style */
         .nav-link {
@@ -107,88 +104,17 @@
             background-color: rgba(140, 31, 45, 0.05); /* Light maroon bg */
         }
 
-        /* Hide header initially */
-        #header {
-            transform: translateY(-100%);
-        }
-
-        /* Progress Circle Styles */
-        .progress-circle {
-            width: 150px;
-            height: 150px;
-            position: relative;
-        }
-        .progress-circle-bg {
-            fill: none;
-            stroke: #e6e6e6;
-            stroke-width: 12;
-        }
-        .progress-circle-fg {
-            fill: none;
-            stroke: #8C1F2D; /* FIXED: Hardcoded brand-maroon color */
-            stroke-width: 12;
-            stroke-linecap: round;
-            transform: rotate(-90deg);
-            transform-origin: 50% 50%;
-            /* 2 * pi * r = 2 * 3.1415 * 54 = 339.29 */
-            stroke-dasharray: 339;
-            stroke-dashoffset: 339;
-            transition: stroke-dashoffset 1.5s ease-out;
-        }
         
-        .progress-text {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 2rem;
-            font-weight: 800;
-        }
-        
-        /* 
-        **
-        ** THE FIX IS HERE - THESE STYLES WERE MISSING **
-        **
-        */
-        #problem.is-visible .progress-circle-17 .progress-circle-fg {
-             /* 100 - 17 = 83. 339 * 0.83 = 281.37 */
-            stroke-dashoffset: 281;
-        }
-        #problem.is-visible .progress-circle-50 .progress-circle-fg {
-            /* 100 - 50 = 50. 339 * 0.50 = 169.5 */
-            stroke-dashoffset: 170;
-        }
-        
-        /* Fade-in for graphs */
-        .progress-graph {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 1s ease-out, transform 1s ease-out;
-        }
-        #problem.is-visible .progress-graph-1 {
-            opacity: 1;
-            transform: translateY(0);
-            transition-delay: 0.2s;
-        }
-         #problem.is-visible .progress-graph-2 {
-            opacity: 1;
-            transform: translateY(0);
-            transition-delay: 0.5s;
-        }
-
 
     </style>
 </head>
 <body class="bg-brand-cream">
 
-    <!-- HEADER & NAVIGATION -->
-    <header id="header" class="fixed top-0 left-0 right-0 z-50 transition-transform duration-300 bg-brand-cream/90 backdrop-blur-md shadow-sm h-16">
+    <!-- HEADER & NAVIGATION --><header id="header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-brand-cream/90 backdrop-blur-md shadow-sm h-16">
         <nav class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-full">
-                <!-- Logo -->
-                <a href="#home" class="flex-shrink-0 flex items-center header-logo">
-                    <!-- SVG Logo (Restored) -->
-                    <svg width="220" height="80" viewBox="0 0 220 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <!-- Logo --><a href="#home" class="flex-shrink-0 flex items-center header-logo">
+                    <!-- SVG Logo --><svg width="220" height="80" viewBox="0 0 220 80" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <rect width="220" height="80" fill="transparent"/>
                         <text x="0" y="45" font-family="Inter, sans-serif" font-weight="800" font-size="50" fill="#8C1F2D">p</text>
                         <text x="32" y="45" font-family="Inter, sans-serif" font-weight="800" font-size="50" fill="#8A796A">ads</text>
@@ -196,8 +122,7 @@
                     </svg>
                 </a>
 
-                <!-- Mobile Menu Button -->
-                <div class="md:hidden">
+                <!-- Mobile Menu Button --><div class="md:hidden">
                     <button id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-brand-brown hover:text-brand-maroon focus:outline-none focus:ring-2 focus:ring-inset focus:ring-brand-maroon transition-colors duration-200">
                         <span class="sr-only">Open main menu</span>
                         <svg id="menu-icon-open" class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
@@ -209,12 +134,12 @@
                     </button>
                 </div>
 
-                <!-- Desktop Menu -->
-                <div class="hidden md:flex md:items-center md:space-x-6 lg:space-x-8">
-                    <a href="#intro" class="nav-link text-brand-brown font-medium px-3 py-2">Our Mission</a>
+                <!-- Desktop Menu --><div class="hidden md:flex md:items-center md:space-x-6 lg:space-x-8">
                     <a href="#problem" class="nav-link text-brand-brown font-medium px-3 py-2">The Problem</a>
                     <a href="#solution" class="nav-link text-brand-brown font-medium px-3 py-2">Our Solution</a>
-                    <a href="#partner" class="nav-link text-brand-brown font-medium px-3 py-2">Partner</a> 
+                    <a href="#brands" class="nav-link text-brand-brown font-medium px-3 py-2">For Brands</a>
+                    <a href="#venues" class="nav-link text-brand-brown font-medium px-3 py-2">For Venues</a>
+                    <a href="#agencies" class="nav-link text-brand-brown font-medium px-3 py-2">For Agencies</a>
                     <a href="#contact" class="text-brand-cream bg-brand-maroon hover:bg-brand-brown px-4 py-2 rounded-full text-sm font-medium shadow-md transition-all duration-300 hover:scale-105 hover:shadow-lg">
                         Contact Us
                     </a>
@@ -222,13 +147,13 @@
             </div>
         </nav>
 
-        <!-- Mobile Menu (Dropdown) -->
-        <div id="mobile-menu" class="hidden md:hidden absolute top-16 left-0 right-0 bg-brand-cream shadow-xl rounded-b-lg">
+        <!-- Mobile Menu (Dropdown) --><div id="mobile-menu" class="hidden md:hidden absolute top-16 left-0 right-0 bg-brand-cream shadow-xl rounded-b-lg">
             <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                <a href="#intro" class="mobile-nav-link text-brand-brown hover:text-brand-maroon block px-3 py-2 rounded-md text-base font-medium transition-colors duration-200">Our Mission</a>
                 <a href="#problem" class="mobile-nav-link text-brand-brown hover:text-brand-maroon block px-3 py-2 rounded-md text-base font-medium transition-colors duration-200">The Problem</a>
                 <a href="#solution" class="mobile-nav-link text-brand-brown hover:text-brand-maroon block px-3 py-2 rounded-md text-base font-medium transition-colors duration-200">Our Solution</a>
-                <a href="#partner" class="mobile-nav-link text-brand-brown hover:text-brand-maroon block px-3 py-2 rounded-md text-base font-medium transition-colors duration-200">Partner</a> 
+                <a href="#brands" class="mobile-nav-link text-brand-brown hover:text-brand-maroon block px-3 py-2 rounded-md text-base font-medium transition-colors duration-200">For Brands</a>
+                <a href="#venues" class="mobile-nav-link text-brand-brown hover:text-brand-maroon block px-3 py-2 rounded-md text-base font-medium transition-colors duration-200">For Venues</a>
+                <a href="#agencies" class="mobile-nav-link text-brand-brown hover:text-brand-maroon block px-3 py-2 rounded-md text-base font-medium transition-colors duration-200">For Agencies</a>
                 <a href="#contact" class="text-brand-cream bg-brand-maroon hover:bg-brand-brown block px-3 py-3 rounded-md text-base font-medium transition-colors duration-300 text-center mt-2 shadow-md hover:scale-105">
                     Contact Us
                 </a>
@@ -236,38 +161,31 @@
         </div>
     </header>
 
-    <!-- MAIN CONTENT -->
-    <main>
+    <!-- MAIN CONTENT --><main>
 
         <!-- SECTION 1: HERO (Page 1) -->
-        <section id="home" class="flex flex-col items-center justify-between min-h-screen bg-brand-dark-red text-brand-cream text-center pt-24 pb-16">
-            
-            <!-- Big Logo (Top Center) -->
-            <div class="w-full max-w-md lg:max-w-lg px-4">
-                <!-- New SVG Hero Logo (White/Cream) -->
-                <svg width="440" height="160" viewBox="0 0 440 160" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-auto">
-                    <rect width="440" height="160" fill="transparent"/>
-                    <text x="0" y="90" font-family="Inter, sans-serif" font-weight="800" font-size="100" fill="white">p</text>
-                    <text x="64" y="90" font-family="Inter, sans-serif" font-weight="800" font-size="100" fill="#FDF8EE">ads</text>
-                    <text x="0" y="140" font-family="Inter, sans-serif" font-weight="600" font-size="24" fill="#FDF8EE" letter-spacing="0.05em">FREE PADS FUNDED BY ADS</text>
-                </svg>
-            </div>
+    <div id="home" class="relative h-screen w-screen bg-cover bg-center" style="background-image: url('the front.png');">
+        <!-- Overlay for better text readability (optional) -->
+        <div class="absolute inset-0 bg-black/30"></div>
 
-            <!-- Pad Image with Hover (Bottom Center) -->
-            <div class="px-4">
-                <img src="home.png.png" 
-                     alt="Hand holding sanitary pad wrapper with text 'Your Ad Delivers Dignity'"
-                     class="rounded-2xl w-full max-w-sm md:max-w-md object-cover transition-all duration-300 ease-in-out hover:scale-110"
-                     onerror="this.src='https://placehold.co/500x500/FFFFFF/8C1F2D?text=Image+Placeholder&font=inter'">
-            </div>
-        </section>
+        <!-- Centered Content -->
+        <div class="relative z-10 flex flex-col items-center justify-center h-full text-center text-white px-4">
+            <!-- You can add a title or logo here if needed -->
+            <!-- Example: -->
+            <!-- <h1 class="text-5xl font-bold">Welcome</h1> -->
+        </div>
+    </div>
 
-        <!-- SECTION 2: INTRO (Page 2) -->
-        <section id="intro" class="flex items-center justify-center min-h-screen">
+        <!-- SECTION 2: INTRO (Page 2) --><section id="intro" class="flex items-center justify-center min-h-screen">
             <div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-                    <!-- Text Content -->
-                    <div class="text-center md:text-left order-1 md:order-1">
+                    <!-- Image --><div class="flex justify-center order-1 md:order-2">
+                        <img src="home image.png" 
+                             alt="Hand holding sanitary pad wrapper with text 'Your Ad Delivers Dignity'"
+                             class="rounded-2xl shadow-2xl w-full max-w-md object-cover"
+                             onerror="this.src='https://placehold.co/500x500/FFFFFF/8C1F2D?text=Image+Placeholder&font=inter'">
+                    </div>
+                    <!-- Text Content --><div class="text-center md:text-left order-2 md:order-1">
                         <h1 class="mt-4 text-5xl lg:text-7xl font-extrabold text-brand-maroon leading-tight">
                             YOUR AD
                             <br>
@@ -282,92 +200,51 @@
                             Learn How It Works
                         </a>
                     </div>
-                    <!-- Image -->
-                    <div class="flex justify-center order-2 md:order-2">
-                        <img src="home image.png" 
-                             alt="Hand holding sanitary pad wrapper with text 'Your Ad Delivers Dignity'"
-                             class="rounded-2xl shadow-2xl w-full max-w-md object-cover"
-                             onerror="this.src='https://placehold.co/500x500/FFFFFF/8C1F2D?text=Image+Placeholder&font=inter'">
-                    </div>
                 </div>
             </div>
         </section>
 
-
-        <!-- SECTION 3: THE PROBLEM (Page 2-4) -->
-        <section id="problem" class="bg-white">
+        <!-- SECTION 3: THE PROBLEM (Page 2-4) --><section id="problem" class="bg-white">
             <div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                
-                <!-- Re-ordered Layout -->
-                <div class="flex flex-col items-center gap-12">
-                    
-                    <!-- 1. Top Text -->
-                    <div class="text-center max-w-4xl mx-auto">
+                <div class="grid grid-cols-1 gap-12 lg:gap-20 items-center">
+                    <!-- Stats & Text --><div class="text-center max-w-4xl mx-auto">
                         <span class="text-lg font-bold text-brand-maroon uppercase tracking-widest">As you are reading this...</span>
-                    </div>
-
-                    <!-- 2. Animated Progress Circles -->
-                    <div class="flex flex-col sm:flex-row items-center justify-center gap-12 w-full">
-                        <!-- Graph 1: 17% -->
-                        <div class="progress-graph progress-graph-1 flex flex-col items-center">
-                            <div class="progress-circle progress-circle-17">
-                                <!-- text-brand-maroon class is NOT needed here -->
-                                <svg viewBox="0 0 120 120"> 
-                                    <circle class="progress-circle-bg" cx="60" cy="60" r="54"></circle>
-                                    <circle class="progress-circle-fg" cx="60" cy="60" r="54"></circle>
-                                </svg>
-                                <div class="progress-text text-brand-maroon">17%</div>
-                            </div>
-                            <p class="mt-4 text-lg text-brand-brown font-semibold text-center max-w-[150px]">of women are on their period.</p>
-                        </div>
                         
-                        <!-- Graph 2: 50% -->
-                        <div class="progress-graph progress-graph-2 flex flex-col items-center">
-                            <div class="progress-circle progress-circle-50">
-                                <!-- text-brand-maroon class is NOT needed here -->
-                                <svg viewBox="0 0 120 120">
-                                    <circle class="progress-circle-bg" cx="60" cy="60" r="54"></circle>
-                                    <circle class="progress-circle-fg" cx="60" cy="60" r="54"></circle>
-                                </svg>
-                                <div class="progress-text text-brand-maroon">50%</div>
+                        <div class="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-8">
+                            <div class="bg-brand-cream p-6 rounded-xl shadow-md">
+                                <span class="text-6xl font-extrabold text-brand-maroon">17%</span>
+                                <p class="mt-2 text-lg text-brand-brown font-semibold">of the womenkind are on their period.</p>
                             </div>
-                            <p class="mt-4 text-lg text-brand-brown font-semibold text-center max-w-[150px]">of whom do not have access.</p>
+                            <div class="bg-brand-cream p-6 rounded-xl shadow-md">
+                                <span class="text-6xl font-extrabold text-brand-maroon">50%</span>
+                                <p class="mt-2 text-lg text-brand-brown font-semibold">of whom do not have access to sanitary pads.</p>                          </div>
                         </div>
-                    </div>
-
-                    <!-- 3. Bottom Text -->
-                    <div class="text-center max-w-4xl mx-auto">
                         <h2 class="mt-12 text-3xl lg:text-4xl font-bold text-brand-brown">
                             Have you wondered what women do when they get their period in a public space?
                         </h2>
-                        
                         <p class="mt-6 text-xl text-gray-700">
                             If there are no pads, they make do. Toilet paper = Pads.
                         </p>
-                        
-                        <!-- Image added here as requested -->
-                        <div class="flex justify-center my-8 lg:my-12">
-                            <img src="image 5.png" 
+
+                        <!-- Image --><div class="flex justify-center my-8 lg:my-12">
+                            <img src="image 2.png" 
                                  alt="Thoughtful profile of a woman"
-                                 class="w-full max-w-md object-cover transition-transform duration-300 ease-in-out hover:scale-105" 
+                                 class="rounded-2xl shadow-xl w-full max-w-md object-cover"
                                  style="aspect-ratio: 4/5;"
                                  onerror="this.src='https://placehold.co/500x600/F0F0F0/8A796A?text=Image+Placeholder&font=inter'">
                         </div>
 
-                        <p class="mt-8 text-3xl lg:text-4xl font-extrabold text-brand-maroon bg-brand-cream/60 p-4 rounded-lg inline-block">
+                        <p class="mt-4 text-3xl lg:text-4xl font-extrabold text-brand-maroon bg-brand-cream/60 p-4 rounded-lg inline-block">
                             Toilet paper isn't the solution,
                             <br>
                             <span class="text-brand-brown">ACCESS is.</span>
                         </p>
                     </div>
-
                 </div>
-
             </div>
         </section>
 
-        <!-- SECTION 4: OUR SOLUTION (Page 5) -->
-        <section id="solution">
+        <!-- SECTION 4: OUR SOLUTION (Page 5) --><section id="solution">
             <div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
                 <h2 class="text-4xl lg:text-5xl font-extrabold text-brand-maroon">
                     We Solve For That <span class="text-brand-brown">ACCESS...</span>
@@ -377,24 +254,21 @@
                 </p>
 
                 <div class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
-                    <!-- Step 1 -->
-                    <div class="bg-white p-8 rounded-2xl shadow-xl border-t-4 border-brand-maroon">
+                    <!-- Step 1 --><div class="bg-white p-8 rounded-2xl shadow-xl border-t-4 border-brand-maroon">
                         <span class="text-5xl font-extrabold text-brand-maroon">1.</span>
                         <h3 class="mt-4 text-2xl font-bold text-brand-brown">Brands Pay for Ads</h3>
                         <p class="mt-3 text-gray-600">
                             Brands pay to place their ads on our custom-designed, premium sanitary pad wrappers.
                         </p>
                     </div>
-                    <!-- Step 2 -->
-                    <div class="bg-white p-8 rounded-2xl shadow-xl border-t-4 border-brand-maroon">
+                    <!-- Step 2 --><div class="bg-white p-8 rounded-2xl shadow-xl border-t-4 border-brand-maroon">
                         <span class="text-5xl font-extrabold text-brand-maroon">2.</span>
                         <h3 class="mt-4 text-2xl font-bold text-brand-brown">Women Get Free Access</h3>
                         <p class="mt-3 text-gray-600">
                             Women get access to these free pads in public spaces through our network of venue partners.
                         </p>
                     </div>
-                    <!-- Step 3 -->
-                    <div class="bg-white p-8 rounded-2xl shadow-xl border-t-4 border-brand-maroon">
+                    <!-- Step 3 --><div class="bg-white p-8 rounded-2xl shadow-xl border-t-4 border-brand-maroon">
                         <span class="text-5xl font-extrabold text-brand-maroon">3.</span>
                         <h3 class="mt-4 text-2xl font-bold text-brand-brown">You Get Remembered</h3>
                         <p class="mt-3 text-gray-600">
@@ -405,8 +279,7 @@
             </div>
         </section>
 
-        <!-- SECTION 5: HOW IT WORKS (Page 6) -->
-        <section id="how-it-works" class="bg-white">
+        <!-- SECTION 5: HOW IT WORKS (Page 6) --><section id="how-it-works" class="bg-white">
             <div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <div class="text-center">
                     <h2 class="text-4xl lg:text-5xl font-extrabold text-brand-maroon">What Is It That We Do?</h2>
@@ -416,29 +289,25 @@
                 </div>
 
                 <div class="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                    <!-- Step 1: Co-Create -->
-                    <div class="bg-brand-cream p-6 rounded-xl shadow-lg flex flex-col">
+                    <!-- Step 1: Co-Create --><div class="bg-brand-cream p-6 rounded-xl shadow-lg flex flex-col">
                         <h3 class="text-xl font-bold text-brand-maroon">1. Co-Create & Package</h3>
                         <p class="mt-3 text-gray-700 flex-grow">
                             We co-create the ad and develop the custom, high-quality packaging.
                         </p>
                     </div>
-                    <!-- Step 2: Identify -->
-                    <div class="bg-brand-cream p-6 rounded-xl shadow-lg flex flex-col">
+                    <!-- Step 2: Identify --><div class="bg-brand-cream p-6 rounded-xl shadow-lg flex flex-col">
                         <h3 class="text-xl font-bold text-brand-maroon">2. Identify & Place</h3>
                         <p class="mt-3 text-gray-700 flex-grow">
                             Identify the right distribution spaces from our pool of venue partners—restaurants, campuses, clubs, etc.
                         </p>
                     </div>
-                    <!-- Step 3: Track -->
-                    <div class="bg-brand-cream p-6 rounded-xl shadow-lg flex flex-col">
+                    <!-- Step 3: Track --><div class="bg-brand-cream p-6 rounded-xl shadow-lg flex flex-col">
                         <h3 class="text-xl font-bold text-brand-maroon">3. Track Performance</h3>
                         <p class="mt-3 text-gray-700 flex-grow">
                             We track stock movement and campaign performance in real-time.
                         </p>
                     </div>
-                    <!-- Step 4: Report -->
-                    <div class="bg-brand-cream p-6 rounded-xl shadow-lg flex flex-col">
+                    <!-- Step 4: Report --><div class="bg-brand-cream p-6 rounded-xl shadow-lg flex flex-col">
                         <h3 class="text-xl font-bold text-brand-maroon">4. Report Impact</h3>
                         <p class="mt-3 text-gray-700 flex-grow">
                             Brands receive simple, transparent reporting to measure both usage and impact.
@@ -448,33 +317,102 @@
             </div>
         </section>
 
-        <!-- SECTION 6: PARTNER -->
-        <section id="partner" class="bg-brand-cream">
+        <!-- SECTION 6: FOR BRANDS (Page 7) --><section id="brands">
             <div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                <div class="text-center mb-12">
-                    <h2 class="text-4xl lg:text-5xl font-extrabold text-brand-maroon">Partner With Us</h2>
-                </div>
-                <!-- Verticle layout -->
-                <div class="grid grid-cols-1 gap-8 max-w-xl mx-auto">
-                    <!-- Card 1: Brand Partner -->
-                    <div class="bg-brand-maroon text-brand-cream p-12 rounded-2xl shadow-xl flex flex-col items-center text-center">
-                        <h3 class="text-3xl font-extrabold">Become a Brand Partner</h3>
-                        <p class="mt-4 text-lg text-brand-cream/90">
-                            Place your message in a moment that matters.
-                        </p>
-                        <a href="#contact" class="inline-block mt-8 px-6 py-3 bg-brand-cream text-brand-maroon font-semibold rounded-full shadow-lg hover:bg-opacity-90 transition-all duration-300">
-                            Learn more
-                        </a>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+                    <!-- Image --><div class="flex justify-center order-1 lg:order-2">
+                        <img src="image 3.png" 
+                             alt="Artistic collage of eyes, representing impressions"
+                             class="rounded-2xl shadow-2xl w-full max-w-md object-cover"
+                             style="aspect-ratio: 1/1;"
+                             onerror="this.src='https://placehold.co/500x500/F0F0F0/333333?text=Image+Placeholder&font=inter'">
                     </div>
-                    <!-- Card 2: Venue Partner -->
-                    <div class="bg-brand-brown text-brand-cream p-12 rounded-2xl shadow-xl flex flex-col items-center text-center">
-                        <h3 class="text-3xl font-extrabold">Become a Venue Partner</h3>
-                        <p class="mt-4 text-lg text-brand-cream/90">
-                            Offer a free amenity that shows you care.
+                    <!-- Text Content --><div class="order-2 lg:order-1">
+                        <h2 class="text-4xl lg:text-5xl font-extrabold text-brand-maroon">
+                            What's In It For <span class="text-brand-brown">Brands?</span>
+                        </h2>
+                        <p class="mt-4 text-2xl lg:text-3xl font-medium text-brand-brown">
+                            From Impressions to Connections
                         </p>
-                        <a href="#contact" class="inline-block mt-8 px-6 py-3 bg-brand-cream text-brand-brown font-semibold rounded-full shadow-lg hover:bg-opacity-90 transition-all duration-300">
-                            Learn more
-                        </a>
+                        <ul class="mt-8 space-y-6">
+                            <li class="flex items-start">
+                                <span class="flex-shrink-0 flex items-center justify-center h-8 w-8 rounded-full bg-brand-maroon text-brand-cream font-bold text-lg mr-4">1</span>
+                                <span class="text-lg text-gray-700"><strong class="text-brand-brown">Strong Memory & High Recall:</strong> Messaging lands in a private, distraction-free moment.</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="flex-shrink-0 flex items-center justify-center h-8 w-8 rounded-full bg-brand-maroon text-brand-cream font-bold text-lg mr-4">2</span>
+                                <span class="text-lg text-gray-700"><strong class="text-brand-brown">Emotional Connection:</strong> Creates a deep connection through purpose-led positioning.</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="flex-shrink-0 flex items-center justify-center h-8 w-8 rounded-full bg-brand-maroon text-brand-cream font-bold text-lg mr-4">3</span>
+                                <span class="text-lg text-gray-700"><strong class="text-brand-brown">Category Innovation:</strong> A fresh, uncluttered medium that sets your brand apart.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 7: FOR VENUES (Page 8-9) --><section id="venues" class="bg-white">
+            <div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                <!-- Part 1: Value Prop --><div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+                    <!-- Image --><div class="flex justify-center">
+                        <img src="image 3.png" 
+                             alt="Pad dispensers in a clean public washroom"
+                             class="rounded-2xl shadow-2xl w-full max-w-md object-cover"
+                             style="aspect-ratio: 1/1;"
+                             onerror="this.src='https://placehold.co/500x500/F0F0F0/8A796A?text=Image+Placeholder&font=inter'">
+                    </div>
+                    <!-- Text Content --><div>
+                        <h2 class="text-4xl lg:text-5xl font-extrabold text-brand-maroon">
+                            What's In It For <span class="text-brand-brown">Venue Partners?</span>
+                        </h2>
+                        <p class="mt-4 text-2xl lg:text-3xl font-medium text-brand-brown">
+                            Free To You, Priceless To Them
+                        </p>
+                        <ul class="mt-8 space-y-6">
+                            <li class="flex items-start">
+                                <svg class="flex-shrink-0 h-6 w-6 text-brand-maroon mt-1 mr-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                                <span class="text-lg text-gray-700"><strong class="text-brand-brown">Elevate Customer Experience:</strong> Provides a dignity-driven amenity that elevates the customer experience and strengthens your reputation.</span>
+                            </li>
+                            <li class="flex items-start">
+                                <svg class="flex-shrink-0 h-6 w-6 text-brand-maroon mt-1 mr-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                                <span class="text-lg text-gray-700"><strong class="text-brand-brown">Drive Goodwill at No Cost:</strong> Partner in a purpose-led initiative at NO financial or operational cost to you.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Part 2: Logistics (Page 9) --><!-- REMOVED as per user request -->
+
+            </div>
+        </section>
+
+        <!-- SECTION 8: FOR AGENCIES (Page 11) --><section id="agencies">
+            <div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+                    <!-- Image --><div class="flex justify-center order-1 lg:order-2">
+                        <img src="image 5.png" 
+                             alt="Artistic graphic of a typewriter, representing storytelling"
+                             class="rounded-2xl shadow-2xl w-full max-w-md object-cover"
+                             style="aspect-ratio: 1/1;"
+                             onerror="this.src='https://placehold.co/500x500/F0F0F0/8C1F2D?text=Image+Placeholder&font=inter'">
+                    </div>
+                    <!-- Text Content --><div class="order-2 lg:order-1">
+                        <h2 class="text-4xl lg:text-5xl font-extrabold text-brand-maroon">
+                            What's In It For <span class="text-brand-brown">Agencies?</span>
+                        </h2>
+                        <p class="mt-4 text-2xl lg:text-3xl font-medium text-brand-brown">
+                            Co-Own The Campaign With Us
+                        </p>
+                        <p class="mt-6 text-xl text-gray-700 font-semibold italic">
+                            We are the medium, you are the storytellers.
+                        </p>
+                        <ul class="mt-8 space-y-4 text-lg text-gray-700">
+                            <li class="flex"><strong class="text-brand-maroon mr-2">›</strong> Lead the creative strategy and storytelling.</li>
+                            <li class="flex"><strong class="text-brand-maroon mr-2">›</strong> Adapt client campaigns into pad wrapper copy and visuals.</li>
+                            <li class="flex"><strong class="text-brand-maroon mr-2">›</strong> Design campaign extensions across digital, social, PR, and influencer networks.</li>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -482,8 +420,7 @@
 
     </main>
 
-    <!-- FOOTER (Page 12) -->
-    <footer id="contact" class="bg-brand-brown text-brand-cream">
+    <!-- FOOTER (Page 12) --><footer id="contact" class="bg-brand-brown text-brand-cream">
         <div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
             <div class="text-center">
                 <h2 class="text-4xl lg:text-5xl font-extrabold">
@@ -501,26 +438,25 @@
                     </a>
                 </div>
 
-                <!-- Social Media Icons -->
-                <div class="flex justify-center space-x-6 mt-12">
-                    <!-- Instagram Link -->
+                <!-- Social Media Icons (Example) --><div class="flex justify-center space-x-6 mt-12">
+                    <!-- NEW: Instagram Link -->
                     <a href="https://www.instagram.com/projectqadira?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" class="text-brand-cream/70 hover:text-brand-cream transition-colors" aria-label="Instagram">
-                        <svg class="h-8 w-8" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <svg class="h-8 w-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
                             <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
                             <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
                         </svg>
                     </a>
-                    <!-- LinkedIn Link -->
+                    <!-- NEW: LinkedIn Link -->
                     <a href="https://www.linkedin.com/company/project-qadira/?originalSubdomain=in" target="_blank" rel="noopener noreferrer" class="text-brand-cream/70 hover:text-brand-cream transition-colors" aria-label="LinkedIn">
                         <svg class="h-8 w-8" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
                         </svg>
                     </a>
-                    <!-- Mail Link -->
+                    <!-- NEW: Mail Link -->
                     <a href="mailto:projectqadira2020@gmail.com" class="text-brand-cream/70 hover:text-brand-cream transition-colors" aria-label="Email">
-                        <svg class="h-8 w-8" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                        <svg class="h-8 w-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
                         </svg>
                     </a>
                 </div>
@@ -534,8 +470,7 @@
         </div>
     </footer>
 
-    <!-- JAVASCRIPT -->
-    <script>
+    <!-- JAVASCRIPT --><script>
         // Wrap all scripts in DOMContentLoaded to ensure elements exist
         document.addEventListener('DOMContentLoaded', () => {
             
@@ -545,13 +480,17 @@
             const menuIconOpen = document.getElementById('menu-icon-open');
             const menuIconClose = document.getElementById('menu-icon-close');
             
+            // Function to toggle menu
             function toggleMenu() {
                 mobileMenu.classList.toggle('hidden');
                 menuIconOpen.classList.toggle('hidden');
                 menuIconClose.classList.toggle('hidden');
             }
+
+            // Event listener for menu button click
             menuButton.addEventListener('click', toggleMenu);
 
+            // Event listeners for mobile menu links to close menu on click
             const mobileLinks = mobileMenu.querySelectorAll('a');
             mobileLinks.forEach(link => {
                 link.addEventListener('click', () => {
@@ -565,73 +504,57 @@
             const header = document.getElementById('header');
             const main = document.querySelector('main');
             const logo = document.querySelector('.header-logo');
-            
-            // Get all sections, *including* the first #home section and new #partner section
             const sections = document.querySelectorAll('section[id]');
-            
             const navLinks = document.querySelectorAll('.nav-link');
             const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
             
-            let headerHeight = header.offsetHeight; 
+            let headerHeight = header.offsetHeight; // Get fixed header height
 
-            sections.forEach((sec, index) => {
-                if (index > 0) { 
-                    sec.style.paddingTop = headerHeight + 40 + 'px'; // 40px buffer
-                } else {
-                    sec.style.minHeight = '100vh';
-                    sec.style.paddingTop = '0'; // No padding-top on #home
-                }
-            });
+            // Add padding to the top of the main content to offset the fixed header
+            // This is crucial for the first section (#home)
+            // main.style.paddingTop = headerHeight + 'px'; // No longer needed as #home is full screen
 
             window.addEventListener('scroll', () => {
                 const scrollPosition = window.scrollY;
-                let currentSection = 'home'; 
+                let currentSection = '';
 
+                // --- Scroll Spy Logic ---
                 sections.forEach(section => {
                     const sectionTop = section.offsetTop;
-                    if (scrollPosition >= sectionTop - headerHeight - 40) { // 40px buffer
+                    
+                    // Adjusted offset logic:
+                    // sectionTop is the distance from the top of the *page*
+                    // We need to subtract the header height and a small buffer
+                    if (scrollPosition >= sectionTop - headerHeight - 20) { 
                         currentSection = section.getAttribute('id');
                     }
                 });
 
+                // Update Desktop Nav Links
                 navLinks.forEach(link => {
                     link.classList.remove('active-link');
-                    if (link.getAttribute('href') === `#${currentSection}`) {
+                    // Special case: if on #home or #intro, no link is active
+                    if (currentSection !== 'home' && currentSection !== 'intro' && link.getAttribute('href') === `#${currentSection}`) {
                         link.classList.add('active-link');
                     }
                 });
 
+                // Update Mobile Nav Links
                 mobileNavLinks.forEach(link => {
                     link.classList.remove('active-link');
-                     if (link.getAttribute('href') === `#${currentSection}`) {
+                    // Special case: if on #home or #intro, no link is active
+                     if (currentSection !== 'home' && currentSection !== 'intro' && link.getAttribute('href') === `#${currentSection}`) {
                         link.classList.add('active-link');
                     }
                 });
 
-                if (scrollPosition > window.innerHeight - 100) { 
-                    header.style.transform = 'translateY(0%)'; // Show header
+                // --- Header visibility on scroll ---
+                if (scrollPosition > 100) { // Show header after scrolling down 100px
+                    header.classList.remove('-translate-y-full');
                 } else {
-                    header.style.transform = 'translateY(-100%)'; // Hide header
+                    header.classList.add('-translate-y-full');
                 }
             });
-            
-            window.dispatchEvent(new Event('scroll'));
-
-            // --- Chart Animation Observer ---
-            const problemSection = document.getElementById('problem');
-            let chartRendered = false; // Flag to ensure chart only renders once
-
-            const chartObserver = new IntersectionObserver((entries) => {
-                if (entries[0].isIntersecting && !chartRendered) {
-                    problemSection.classList.add('is-visible');
-                    chartRendered = true; // Set flag to true
-                    chartObserver.unobserve(problemSection); // Stop observing
-                }
-            }, { 
-                threshold: 0.5 // Trigger when 50% of the section is visible
-            });
-
-            chartObserver.observe(problemSection);
         });
 
     </script>
