@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>P(ADS) - Your Ad Delivers Dignity</title>
+    <meta name="description" content="The first ad-funded free sanitary pads in India. Reach 100,000 women across 10 premium venues.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        maroon: '#8C1F2D',
+                        cream: '#FDF8EE',
+                        brown: '#8A796A',
+                        darkred: '#450a0a',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Merriweather', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet">
+
+    <!-- Custom Styles -->
+    <style>
+        body {
+            background-color: #FDF8EE; /* Cream Background */
+            color: #450a0a;
+        }
+        
+        /* Smooth Scroll Behavior */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Navigation Transition */
+        #navbar {
+            transition: all 0.3s ease-in-out;
+        }
+        #navbar.scrolled {
+            background-color: rgba(253, 248, 238, 0.95);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+        }
+
+        /* Animation Utilities */
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .fade-in-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Circular Progress Animation */
+        .progress-ring__circle {
+            transition: stroke-dashoffset 1.5s ease-in-out;
+            transform: rotate(-90deg);
+            transform-origin: 50% 50%;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #FDF8EE;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #8C1F2D;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="font-sans antialiased overflow-x-hidden">
+
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed w-full z-50 top-0 pt-6 pb-6 px-6 transition-all duration-300">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <!-- Logo -->
+            <a href="#home" class="text-3xl font-bold font-serif tracking-tighter text-maroon z-50 relative">
+                P(ADS)<span class="text-brown text-lg italic">.</span>
+            </a>
+
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex space-x-8 items-center">
+                <a href="#intro" class="text-brown hover:text-maroon transition-colors font-medium">About</a>
+                <a href="#why-it-works" class="text-brown hover:text-maroon transition-colors font-medium">Why It Works</a>
+                <a href="#how-it-works" class="text-brown hover:text-maroon transition-colors font-medium">Process</a>
+                <a href="#partner" class="text-brown hover:text-maroon transition-colors font-medium">Partner</a>
+                <a href="#contact" class="px-6 py-2 bg-maroon text-cream rounded-full hover:bg-brown transition-colors shadow-md hover:shadow-lg transform hover:-translate-y-0.5 duration-200">
+                    Let's Talk
+                </a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button id="menu-btn" class="md:hidden text-maroon focus:outline-none z-50">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Mobile Menu Overlay -->
+        <div id="mobile-menu" class="fixed inset-0 bg-cream transform translate-x-full transition-transform duration-300 md:hidden flex flex-col justify-center items-center space-y-8 z-40">
+            <a href="#intro" class="text-2xl text-maroon font-serif mobile-link">About</a>
+            <a href="#why-it-works" class="text-2xl text-maroon font-serif mobile-link">Why It Works</a>
+            <a href="#how-it-works" class="text-2xl text-maroon font-serif mobile-link">Process</a>
+            <a href="#partner" class="text-2xl text-maroon font-serif mobile-link">Partner</a>
+            <a href="#contact" class="text-2xl text-maroon font-serif mobile-link font-bold">Let's Talk</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section (#home) -->
+    <section id="home" class="min-h-screen bg-darkred flex flex-col justify-between relative overflow-hidden pt-32 pb-16">
+        <!-- Background Decor -->
+        <div class="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
+            <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" class="w-full h-full">
+                <path fill="#FDF8EE" d="M44.7,-76.4C58.9,-69.2,71.8,-59.1,81.6,-46.7C91.4,-34.3,98.1,-19.6,95.8,-5.8C93.5,8,82.2,20.9,71,31.6C59.8,42.3,48.7,50.8,37.2,57.5C25.7,64.2,13.8,69.1,1.4,66.7C-11,64.3,-23.8,54.6,-36.1,46.8C-48.4,39,-60.1,33.1,-68.6,23.6C-77.1,14.1,-82.3,1,-80.6,-11.2C-78.9,-23.4,-70.3,-34.7,-59.9,-43.4C-49.5,-52.1,-37.3,-58.2,-25.2,-67C-13.1,-75.8,1.1,-87.3,12.9,-82.3C24.7,-77.3,44.7,-76.4,44.7,-76.4Z" transform="translate(100 100)" />
+            </svg>
+        </div>
+
+        <!-- Content Top -->
+        <div class="relative z-10 text-center px-6 fade-in-up">
+            <!-- Logo SVG -->
+            <div class="mb-8 inline-block">
+               <svg width="120" height="60" viewBox="0 0 200 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                   <text x="10" y="70" font-family="serif" font-size="60" fill="white" font-weight="bold">P(</text>
+                   <text x="70" y="70" font-family="serif" font-size="60" fill="#FDF8EE" font-weight="bold">ADS</text>
+                   <text x="190" y="70" font-family="serif" font-size="60" fill="white" font-weight="bold">)</text>
+               </svg>
+            </div>
+            
+            <h1 class="text-4xl md:text-6xl lg:text-7xl font-serif text-cream font-light mb-6 leading-tight">
+                Your Ad Delivers <span class="italic font-bold text-maroon bg-cream px-2">Dignity</span>
+            </h1>
+            <p class="text-xl md:text-2xl text-gray-300 max-w-2xl mx-auto font-light mb-8">
+                The first ad-funded free sanitary pads in India.
+            </p>
+            
+            <!-- Stats Pill -->
+            <div class="inline-block bg-maroon/30 backdrop-blur-sm border border-maroon/50 rounded-full px-6 py-2 text-cream text-sm md:text-base tracking-wide">
+                Reach 100,000 women across 10 premium venues
+            </div>
+        </div>
+
+        <!-- Content Bottom / Image -->
+        <div class="relative z-10 flex justify-center items-end px-6 mt-12">
+            <div class="group cursor-pointer transform transition-transform duration-500 hover:scale-105 relative">
+                <!-- Hand Holding Pad Wrapper Placeholder -->
+                <div class="relative w-64 h-80 md:w-80 md:h-96">
+                     <svg viewBox="0 0 200 300" class="w-full h-full drop-shadow-2xl" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M20 250 C 20 280, 80 300, 120 280 L 160 200 C 170 180, 160 160, 140 170 L 100 240 Z" fill="#8A796A"/>
+                        <rect x="40" y="50" width="120" height="180" rx="10" fill="#FDF8EE" stroke="#e5e7eb" stroke-width="2"/>
+                        <rect x="60" y="100" width="80" height="80" rx="50" fill="#8C1F2D" fill-opacity="0.1"/>
+                        <text x="100" y="145" text-anchor="middle" fill="#8C1F2D" font-family="serif" font-size="24">P(ADS)</text>
+                     </svg>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Intro Section (#intro) -->
+    <section id="intro" class="py-24 px-6 md:px-12 max-w-7xl mx-auto">
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+            <!-- Text Content -->
+            <div class="order-1 md:order-1 fade-in-up">
+                <span class="text-maroon font-bold tracking-widest uppercase text-sm mb-4 block">The Concept</span>
+                <h2 class="text-3xl md:text-4xl font-serif text-darkred mb-6 leading-tight">
+                    Reaching women where attention is guaranteed.
+                </h2>
+                <div class="space-y-4 mb-8 text-lg text-gray-700">
+                    <p>
+                        We turn sanitary pad packaging into premium ad space. You sponsor the pads, and we distribute them for free in premium venues.
+                    </p>
+                    <p class="font-medium text-maroon">
+                        1. Choose Venues &rarr; 2. Go Live &rarr; 3. She Uses It &rarr; 4. You Get Results.
+                    </p>
+                </div>
+                <a href="#how-it-works" class="inline-block border-b-2 border-maroon text-maroon font-bold pb-1 hover:text-brown hover:border-brown transition-colors">
+                    See the Full Process &rarr;
+                </a>
+            </div>
+
+            <!-- Image -->
+            <div class="order-2 md:order-2 flex justify-center fade-in-up" style="transition-delay: 200ms;">
+                <div class="bg-white p-6 rounded-2xl shadow-xl transform -rotate-1 hover:rotate-0 transition-transform duration-500">
+                    <!-- Intro Image Placeholder -->
+                    <div class="w-full h-64 bg-cream rounded-lg flex items-center justify-center overflow-hidden">
+                        <svg class="w-24 h-24 text-maroon opacity-30" fill="currentColor" viewBox="0 0 24 24">
+                             <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/>
+                        </svg>
+                    </div>
+                    <p class="mt-4 text-center font-serif text-maroon font-bold">Premium Ad Space</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Section (#problem) -->
+    <section id="problem" class="py-24 px-6 bg-white border-t border-gray-100">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
+            <!-- Text Content -->
+            <div class="fade-in-up">
+                <h2 class="text-3xl md:text-5xl font-serif text-darkred mb-6 leading-tight">
+                    As you are reading this...
+                </h2>
+                <div class="space-y-6 text-lg text-gray-700 leading-relaxed">
+                    <p class="font-medium">Have you wondered if the women around you have access to what they need?</p>
+                    <p>If there are no pads, toilet paper isn't the solution.</p>
+                </div>
+            </div>
+
+            <!-- Animated Graphs -->
+            <div class="grid grid-cols-2 gap-8">
+                <!-- Graph 1: 17% -->
+                <div class="flex flex-col items-center text-center fade-in-up stats-trigger" data-percent="17">
+                    <div class="relative w-40 h-40 mb-4">
+                        <svg class="w-full h-full transform" viewBox="0 0 120 120">
+                            <circle class="text-gray-100" stroke-width="8" stroke="currentColor" fill="transparent" r="52" cx="60" cy="60" />
+                            <circle class="text-maroon progress-ring__circle" stroke-width="8" stroke-linecap="round" stroke="currentColor" fill="transparent" r="52" cx="60" cy="60" stroke-dasharray="326.72" stroke-dashoffset="326.72" />
+                        </svg>
+                        <div class="absolute top-0 left-0 w-full h-full flex items-center justify-center flex-col">
+                            <span class="text-3xl font-bold text-maroon">17%</span>
+                        </div>
+                    </div>
+                    <p class="text-sm font-medium text-gray-700 px-2">of women are on their period.</p>
+                </div>
+
+                <!-- Graph 2: 50% -->
+                <div class="flex flex-col items-center text-center fade-in-up stats-trigger" style="transition-delay: 200ms;" data-percent="50">
+                    <div class="relative w-40 h-40 mb-4">
+                        <svg class="w-full h-full transform" viewBox="0 0 120 120">
+                            <circle class="text-gray-100" stroke-width="8" stroke="currentColor" fill="transparent" r="52" cx="60" cy="60" />
+                            <circle class="text-maroon progress-ring__circle" stroke-width="8" stroke-linecap="round" stroke="currentColor" fill="transparent" r="52" cx="60" cy="60" stroke-dasharray="326.72" stroke-dashoffset="326.72" />
+                        </svg>
+                        <div class="absolute top-0 left-0 w-full h-full flex items-center justify-center flex-col">
+                            <span class="text-3xl font-bold text-maroon">50%</span>
+                        </div>
+                    </div>
+                    <p class="text-sm font-medium text-gray-700 px-2">of whom do not have access.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why It Works (#why-it-works) -->
+    <section id="why-it-works" class="py-24 px-6 bg-cream">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16 fade-in-up">
+                <span class="text-brown font-bold tracking-widest uppercase text-sm">The Model</span>
+                <h2 class="text-4xl font-serif text-maroon mt-2">Why It Works</h2>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Card 1: Attention -->
+                <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 border-t-4 border-maroon fade-in-up">
+                    <div class="w-12 h-12 bg-maroon rounded-lg flex items-center justify-center mb-6 text-white">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-darkred mb-4">Attention</h3>
+                    <p class="text-gray-600 text-sm mb-4">2+ minutes interaction time in a distraction-free moment.</p>
+                    <p class="text-maroon font-bold text-lg">240x longer dwell time than digital ads.</p>
+                </div>
+
+                <!-- Card 2: Conversion -->
+                <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 border-t-4 border-brown fade-in-up" style="transition-delay: 100ms;">
+                    <div class="w-12 h-12 bg-brown rounded-lg flex items-center justify-center mb-6 text-white">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h4.01M16 20h4M4 12h4m12 0h.01M5 8h2a1 1 0 001-1V5a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1zm12 0h2a1 1 0 001-1V5a1 1 0 00-1-1h-2a1 1 0 00-1 1v2a1 1 0 001 1zM5 20h2a1 1 0 001-1v-2a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-darkred mb-4">Conversion</h3>
+                    <p class="text-gray-600 text-sm mb-4">QR codes track every scan, click, and purchase.</p>
+                    <p class="text-brown font-bold text-lg">Point-of-need marketing when wellness matters.</p>
+                </div>
+
+                <!-- Card 3: Impact -->
+                <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 border-t-4 border-maroon fade-in-up" style="transition-delay: 200ms;">
+                    <div class="w-12 h-12 bg-maroon rounded-lg flex items-center justify-center mb-6 text-white">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-darkred mb-4">Impact</h3>
+                    <p class="text-gray-600 text-sm mb-4">Fight period poverty by providing free, eco-friendly products.</p>
+                    <p class="text-maroon font-bold text-lg">Brands that "had their back" earn loyalty.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section (#stats) - Dark Maroon -->
+    <section id="stats" class="py-24 px-6 bg-maroon text-cream">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16 fade-in-up">
+                <h2 class="text-3xl md:text-5xl font-serif mb-4">Designed to Perform</h2>
+                <p class="opacity-80">Real impact. Real numbers.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+                <!-- Stat 1 -->
+                <div class="p-6 border border-white/10 rounded-lg bg-white/5 hover:bg-white/10 transition-colors fade-in-up">
+                    <div class="text-4xl font-bold mb-2 text-cream">400k+</div>
+                    <div class="text-sm uppercase tracking-widest opacity-70">Women Reached</div>
+                </div>
+                <!-- Stat 2 -->
+                <div class="p-6 border border-white/10 rounded-lg bg-white/5 hover:bg-white/10 transition-colors fade-in-up" style="transition-delay: 100ms;">
+                    <div class="text-4xl font-bold mb-2 text-cream">Low</div>
+                    <div class="text-sm uppercase tracking-widest opacity-70">Cost Per Engaged User</div>
+                </div>
+                <!-- Stat 3 -->
+                <div class="p-6 border border-white/10 rounded-lg bg-white/5 hover:bg-white/10 transition-colors fade-in-up" style="transition-delay: 200ms;">
+                    <div class="text-4xl font-bold mb-2 text-cream">10k</div>
+                    <div class="text-sm uppercase tracking-widest opacity-70">Guaranteed Pickups</div>
+                </div>
+                <!-- Stat 4 -->
+                <div class="p-6 border border-white/10 rounded-lg bg-white/5 hover:bg-white/10 transition-colors fade-in-up" style="transition-delay: 300ms;">
+                    <div class="text-4xl font-bold mb-2 text-cream">5 Mo</div>
+                    <div class="text-sm uppercase tracking-widest opacity-70">Continuous Presence</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works (#how-it-works) -->
+    <section id="how-it-works" class="py-24 px-6 bg-white">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-4xl font-serif text-center text-darkred mb-16 fade-in-up">How It Works</h2>
+            
+            <div class="grid md:grid-cols-4 gap-8 text-center">
+                <!-- Step 1 -->
+                <div class="relative fade-in-up group">
+                    <div class="w-16 h-16 bg-cream text-maroon rounded-full flex items-center justify-center mx-auto mb-6 text-xl font-bold shadow-md group-hover:bg-maroon group-hover:text-white transition-colors duration-300">1</div>
+                    <h4 class="text-lg font-bold text-brown mb-2">Choose Venues</h4>
+                    <p class="text-sm text-gray-500">Select from our premium network.</p>
+                </div>
+                <!-- Step 2 -->
+                <div class="relative fade-in-up group" style="transition-delay: 100ms;">
+                    <div class="w-16 h-16 bg-cream text-maroon rounded-full flex items-center justify-center mx-auto mb-6 text-xl font-bold shadow-md group-hover:bg-maroon group-hover:text-white transition-colors duration-300">2</div>
+                    <h4 class="text-lg font-bold text-brown mb-2">Go Live</h4>
+                    <p class="text-sm text-gray-500">Your ad is placed on pad wrappers.</p>
+                </div>
+                <!-- Step 3 -->
+                <div class="relative fade-in-up group" style="transition-delay: 200ms;">
+                    <div class="w-16 h-16 bg-cream text-maroon rounded-full flex items-center justify-center mx-auto mb-6 text-xl font-bold shadow-md group-hover:bg-maroon group-hover:text-white transition-colors duration-300">3</div>
+                    <h4 class="text-lg font-bold text-brown mb-2">Engagement</h4>
+                    <p class="text-sm text-gray-500">She sees it, uses it, and takes it home.</p>
+                </div>
+                <!-- Step 4 -->
+                <div class="relative fade-in-up group" style="transition-delay: 300ms;">
+                    <div class="w-16 h-16 bg-cream text-maroon rounded-full flex items-center justify-center mx-auto mb-6 text-xl font-bold shadow-md group-hover:bg-maroon group-hover:text-white transition-colors duration-300">4</div>
+                    <h4 class="text-lg font-bold text-brown mb-2">Results</h4>
+                    <p class="text-sm text-gray-500">You get scans & conversions.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Impact Story Section (#impact) -->
+    <section id="impact" class="py-24 px-6 bg-cream/50">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+            <!-- Image Left -->
+            <div class="order-2 md:order-1 flex justify-center fade-in-up">
+                 <div class="relative w-full max-w-md h-80 bg-white p-4 rounded-2xl shadow-lg transform rotate-1 hover:rotate-0 transition-transform duration-300">
+                     <!-- Abstract SVG Illustration for Impact -->
+                     <svg class="w-full h-full rounded-lg bg-cream" viewBox="0 0 200 200" preserveAspectRatio="xMidYMid slice">
+                        <circle cx="100" cy="80" r="40" fill="#8C1F2D" opacity="0.2"/>
+                        <path d="M60,180 Q100,120 140,180" fill="#8A796A" opacity="0.8"/>
+                        <rect x="85" y="130" width="30" height="40" fill="#FDF8EE" stroke="#8A796A"/>
+                        <text x="100" y="100" text-anchor="middle" fill="#8C1F2D" font-size="10" font-family="sans-serif">DIGNITY</text>
+                     </svg>
+                     <div class="absolute -bottom-4 -right-4 bg-maroon text-white py-2 px-4 rounded-lg shadow-lg text-sm font-bold">
+                         Poverty Fighter
+                     </div>
+                 </div>
+            </div>
+
+            <!-- Text Right -->
+            <div class="order-1 md:order-2 fade-in-up" style="transition-delay: 200ms;">
+                <span class="text-brown font-bold tracking-widest uppercase text-sm mb-2 block">Social Impact</span>
+                <h2 class="text-4xl font-serif text-darkred mb-6">your ads deliver dignity</h2>
+                <p class="text-lg text-gray-700 mb-6 leading-relaxed">
+                    Every pad distributed fights period poverty. Every scan tracks ROI. Every campaign builds brand love that money can't buy.
+                </p>
+                <p class="text-gray-600 italic">
+                    "They remember brands that had their back."
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partner / CTA Section (#partner) -->
+    <section id="partner" class="py-24 px-6 bg-cream">
+        <div class="max-w-4xl mx-auto text-center mb-12 fade-in-up">
+            <h2 class="text-4xl md:text-5xl font-serif text-maroon mb-4">Partner With Us</h2>
+            <p class="text-xl text-gray-700">Stop paying for ads people scroll past. Start reaching them where attention is guaranteed.</p>
+        </div>
+
+        <div class="max-w-xl mx-auto grid grid-cols-1 gap-6">
+            <!-- Card 1 -->
+            <div class="bg-maroon rounded-2xl p-8 text-center text-cream transform hover:-translate-y-2 transition-transform duration-300 shadow-xl fade-in-up">
+                <h3 class="text-2xl font-bold mb-2">Become a Brand Partner</h3>
+                <p class="mb-6 opacity-90">Reach 400,000+ womenkind.</p>
+                <a href="#contact" class="inline-block bg-cream text-maroon px-8 py-3 rounded-full font-bold hover:bg-white transition-colors animate-pulse">Learn more</a>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="bg-brown rounded-2xl p-8 text-center text-cream transform hover:-translate-y-2 transition-transform duration-300 shadow-xl fade-in-up" style="transition-delay: 100ms;">
+                <h3 class="text-2xl font-bold mb-2">Become a Venue Partner</h3>
+                <p class="mb-6 opacity-90">Provide dignity in your restrooms.</p>
+                <a href="#contact" class="inline-block bg-cream text-brown px-8 py-3 rounded-full font-bold hover:bg-white transition-colors">Learn more</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer (#contact) -->
+    <footer id="contact" class="bg-darkred text-cream py-16 px-6">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-3 gap-12">
+            <!-- Brand -->
+            <div>
+                <h3 class="text-3xl font-serif font-bold mb-4">P(ADS).</h3>
+                <p class="text-gray-400 mb-6">The first ad-funded free sanitary pads in India.</p>
+                <div class="flex space-x-4">
+                    <!-- Social Icons Placeholders -->
+                    <a href="#" class="w-10 h-10 bg-maroon rounded-full flex items-center justify-center hover:bg-white hover:text-maroon transition-colors">IG</a>
+                    <a href="#" class="w-10 h-10 bg-maroon rounded-full flex items-center justify-center hover:bg-white hover:text-maroon transition-colors">LI</a>
+                    <a href="#" class="w-10 h-10 bg-maroon rounded-full flex items-center justify-center hover:bg-white hover:text-maroon transition-colors">TW</a>
+                </div>
+            </div>
+
+            <!-- Links -->
+            <div>
+                <h4 class="font-bold text-lg mb-4">Quick Links</h4>
+                <ul class="space-y-2 text-gray-400">
+                    <li><a href="#home" class="hover:text-white transition-colors">Home</a></li>
+                    <li><a href="#intro" class="hover:text-white transition-colors">About</a></li>
+                    <li><a href="#why-it-works" class="hover:text-white transition-colors">Why It Works</a></li>
+                    <li><a href="#stats" class="hover:text-white transition-colors">Stats</a></li>
+                    <li><a href="#how-it-works" class="hover:text-white transition-colors">Process</a></li>
+                </ul>
+            </div>
+
+            <!-- Contact -->
+            <div>
+                <h4 class="font-bold text-lg mb-4">Join the Movement</h4>
+                <p class="text-gray-400 mb-2">hello@pads-india.com</p>
+                <p class="text-gray-400 mb-6">+91 98765 43210</p>
+                <button class="bg-cream text-maroon px-6 py-2 rounded-full font-bold hover:bg-white transition-colors">
+                    Contact Us
+                </button>
+            </div>
+        </div>
+        <div class="text-center mt-16 pt-8 border-t border-white/10 text-gray-500 text-sm">
+            &copy; 2023 P(ADS) India. All rights reserved.
+        </div>
+    </footer>
+
+    <!-- JavaScript Logic -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // 1. Mobile Menu Toggle
+            const menuBtn = document.getElementById('menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileLinks = document.querySelectorAll('.mobile-link');
+            let isMenuOpen = false;
+
+            menuBtn.addEventListener('click', () => {
+                isMenuOpen = !isMenuOpen;
+                if (isMenuOpen) {
+                    mobileMenu.classList.remove('translate-x-full');
+                } else {
+                    mobileMenu.classList.add('translate-x-full');
+                }
+            });
+
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    isMenuOpen = false;
+                    mobileMenu.classList.add('translate-x-full');
+                });
+            });
+
+            // 2. Navbar Scroll State
+            const navbar = document.getElementById('navbar');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+            });
+
+            // 3. Intersection Observer for Fade-in Animations
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+
+            const fadeObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target); // Only animate once
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.fade-in-up').forEach(el => {
+                fadeObserver.observe(el);
+            });
+
+            // 4. Circular Progress/Stats Animation
+            const statsObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const circle = entry.target.querySelector('.progress-ring__circle');
+                        const radius = circle.r.baseVal.value;
+                        const circumference = radius * 2 * Math.PI;
+                        
+                        // Set offset based on data-percent
+                        const percent = entry.target.dataset.percent || 75;
+                        const offset = circumference - (percent / 100) * circumference;
+                        
+                        circle.style.strokeDashoffset = offset;
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+
+            document.querySelectorAll('.stats-trigger').forEach(el => {
+                statsObserver.observe(el);
+            });
+        });
+    </script>
+</body>
+</html>
