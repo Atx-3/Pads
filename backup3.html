@@ -94,31 +94,15 @@
         }
 
         /* Stacked Card Styles */
-        .perspective-1000 {
+        .card-stack-container {
             perspective: 1000px;
         }
         .stacked-card {
             position: absolute;
             top: 50%;
             left: 50%;
+            /* Initial transform handled in CSS to ensure tilt */
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-            backface-visibility: hidden;
-            -webkit-backface-visibility: hidden;
-        }
-
-        /* Modal Styles */
-        .modal-overlay {
-            transition: opacity 0.3s ease-in-out, visibility 0.3s;
-        }
-        .modal-content {
-            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .modal-active .modal-overlay {
-            opacity: 1;
-            visibility: visible;
-        }
-        .modal-active .modal-content {
-            transform: scale(1);
         }
     </style>
 </head>
@@ -164,7 +148,7 @@
     </nav>
 
     <!-- Hero Section (#home) -->
-    <section id="home" class="min-h-screen bg-darkred flex flex-col justify-center items-center relative overflow-hidden pt-20 pb-20">
+    <section id="home" class="min-h-screen bg-darkred flex flex-col justify-between relative overflow-hidden pt-32 pb-16">
         <!-- Background Decor -->
         <div class="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
             <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" class="w-full h-full">
@@ -172,25 +156,41 @@
             </svg>
         </div>
 
-        <!-- Content Center -->
-        <div class="relative z-10 flex flex-col items-center justify-center px-6 w-full max-w-5xl fade-in-up">
-            
-            <!-- 1. Logo Image Placeholder -->
+        <!-- Content Top -->
+        <div class="relative z-10 text-center px-6 fade-in-up">
+            <!-- Logo SVG: P in Red, ads in Cream (Lowercase) -->
             <div class="mb-8 inline-block">
-               <img 
-                   src="logo.png" 
-                   alt="Brand Logo" 
-                   class="w-56 h-auto object-contain rounded-lg transition-transform duration-500 hover:scale-105"
-               >
+               <svg width="140" height="70" viewBox="0 0 220 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                   <!-- P in Maroon (Large) -->
+                   <text x="50" y="70" font-family="serif" font-size="70" fill="#8C1F2D" font-weight="bold">P</text>
+                   <!-- ads in Cream (Lowercase) -->
+                   <text x="90" y="70" font-family="serif" font-size="45" fill="#FDF8EE" font-weight="bold">ads</text>
+               </svg>
             </div>
             
-            <!-- 2. Headline Image Placeholder -->
-            <div class="w-full max-w-md">
-                 <img 
-                    src="home.png.png" 
-                    alt="Main Headline" 
-                    class="w-full h-auto object-contain rounded-xl transition-transform duration-500 hover:scale-[1.02]"
-                 >
+            <h1 class="text-4xl md:text-6xl lg:text-7xl font-serif text-cream font-light mb-6 leading-tight">
+                Your Ad Delivers <span class="italic font-bold text-maroon bg-cream px-2">Dignity</span>
+            </h1>
+            <p class="text-xl md:text-2xl text-gray-300 max-w-2xl mx-auto font-light tracking-wide">
+                FREE PADS FUNDED BY ADS
+            </p>
+        </div>
+
+        <!-- Content Bottom / Image -->
+        <div class="relative z-10 flex justify-center items-end px-6 mt-12">
+            <div class="group cursor-pointer transform transition-transform duration-500 hover:scale-105 relative">
+                <!-- Hand Holding Pad Wrapper Placeholder -->
+                <div class="relative w-64 h-80 md:w-80 md:h-96">
+                     <svg viewBox="0 0 200 300" class="w-full h-full drop-shadow-2xl" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M20 250 C 20 280, 80 300, 120 280 L 160 200 C 170 180, 160 160, 140 170 L 100 240 Z" fill="#8A796A"/>
+                        <rect x="40" y="50" width="120" height="180" rx="10" fill="#FDF8EE" stroke="#e5e7eb" stroke-width="2"/>
+                        <rect x="60" y="100" width="80" height="80" rx="50" fill="#8C1F2D" fill-opacity="0.1"/>
+                        <!-- Wrapper Text -->
+                        <text x="100" y="130" text-anchor="middle" fill="#8C1F2D" font-family="sans-serif" font-weight="bold" font-size="14">YOUR AD</text>
+                        <text x="100" y="150" text-anchor="middle" fill="#8C1F2D" font-family="sans-serif" font-weight="bold" font-size="14">DELIVERS</text>
+                        <text x="100" y="170" text-anchor="middle" fill="#8C1F2D" font-family="sans-serif" font-weight="bold" font-size="14">DIGNITY</text>
+                     </svg>
+                </div>
             </div>
         </div>
     </section>
@@ -246,16 +246,15 @@
     <!-- Intro / Solution Section (#intro) -->
     <section id="intro" class="py-24 px-6 md:px-12 max-w-7xl mx-auto bg-cream">
         <div class="grid md:grid-cols-2 gap-12 items-center">
-            <!-- Image Left (UPDATED with IMG tag) -->
+            <!-- Image Left -->
              <div class="order-2 md:order-1 flex justify-center fade-in-up">
                 <div class="bg-white p-6 rounded-2xl shadow-xl transform rotate-1 hover:rotate-0 transition-transform duration-500">
-                    <div class="w-full h-64 rounded-lg flex items-center justify-center overflow-hidden bg-cream/5">
-                        <!-- New Image Placeholder for Section 3 -->
-                        <img 
-                            src="the image.png" 
-                            alt="The Solution Concept" 
-                            class="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
-                        >
+                    <div class="w-full h-64 bg-maroon/5 rounded-lg flex items-center justify-center overflow-hidden p-8">
+                        <svg class="w-full h-full text-maroon" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2">
+                             <rect x="20" y="10" width="60" height="80" rx="5" fill="white" />
+                             <text x="50" y="45" text-anchor="middle" font-size="8" fill="#450a0a" font-family="sans-serif" font-weight="bold">BRAND AD</text>
+                             <text x="50" y="60" text-anchor="middle" font-size="6" fill="#8A796A" font-family="sans-serif">Message here</text>
+                        </svg>
                     </div>
                 </div>
             </div>
@@ -333,17 +332,17 @@
         <div class="sticky top-0 h-screen w-full flex flex-col items-center justify-center overflow-hidden perspective-1000">
             
             <!-- Final Content (Revealed after cards are gone) -->
+            <!-- Standard bold page heading style, initially hidden/behind cards -->
             <div id="final-partner-text" class="absolute z-0 text-center opacity-0 transform translate-y-4 transition-all duration-500 ease-out">
                 <h2 class="text-4xl md:text-5xl font-serif text-maroon mb-4 font-bold">Partner With Us</h2>
-                <p class="text-xl text-gray-700 max-w-2xl mx-auto px-6 mb-8">Join the movement creating dignity. Whether you're a venue or a brand, we have a place for you.</p>
-                <!-- Changed button to anchor tag for correct navigation -->
-                <a href="#contact" class="inline-block bg-maroon text-cream px-8 py-3 rounded-full font-bold hover:bg-brown transition-colors shadow-lg cursor-pointer relative z-50 pointer-events-auto">Get in Touch</a>
+                <p class="text-xl text-gray-700 max-w-2xl mx-auto px-6">Join the movement creating dignity. Whether you're a venue or a brand, we have a place for you.</p>
             </div>
             
             <!-- Cards Stack Container -->
             <div class="relative w-full max-w-md h-[500px] z-10 flex items-center justify-center">
                 
                 <!-- Card 2: Brand Partner (Bottom Card) -->
+                <!-- Initial State: straight, behind Venue -->
                 <div id="card-brand" class="stacked-card absolute w-full h-full bg-maroon text-cream rounded-2xl shadow-2xl p-8 flex flex-col justify-between transform transition-transform duration-75 origin-bottom-right z-20" style="transform: translate(-50%, -50%) rotate(0deg);">
                      <div class="text-center">
                          <div class="inline-block p-3 bg-cream/10 rounded-full mb-4">
@@ -357,10 +356,11 @@
                             <li class="flex items-start"><span class="text-white mr-2 text-lg">•</span>Transparent reporting & tracking.</li>
                         </ul>
                     </div>
-                    <button onclick="openModal('brand-modal')" class="block text-center w-full bg-cream text-maroon py-3 rounded-full font-bold hover:bg-white transition-colors shadow-lg relative z-50 pointer-events-auto cursor-pointer">Start Campaign</button>
+                    <a href="#contact" class="block text-center w-full bg-cream text-maroon py-3 rounded-full font-bold hover:bg-white transition-colors shadow-lg">Start Campaign</a>
                 </div>
 
                 <!-- Card 1: Venue Partner (Top Card) -->
+                <!-- Initial State: Tilted 4deg to show there is something behind -->
                 <div id="card-venue" class="stacked-card absolute w-full h-full bg-white text-darkred rounded-2xl shadow-2xl p-8 flex flex-col justify-between transform transition-transform duration-75 origin-bottom-left z-30 border-t-8 border-brown" style="transform: translate(-50%, -50%) rotate(4deg);">
                     <div class="text-center">
                         <div class="inline-block p-3 bg-brown/10 rounded-full mb-4">
@@ -374,7 +374,7 @@
                             <li class="flex items-start"><span class="text-brown mr-2 text-lg">•</span>Full Control: You approve campaigns.</li>
                         </ul>
                     </div>
-                    <button onclick="openModal('venue-modal')" class="block text-center w-full border-2 border-brown text-brown py-3 rounded-full hover:bg-brown hover:text-white transition-colors font-bold relative z-50 pointer-events-auto cursor-pointer">Provide Access</button>
+                    <a href="#contact" class="block text-center w-full border-2 border-brown text-brown py-3 rounded-full hover:bg-brown hover:text-white transition-colors font-bold">Provide Access</a>
                     
                     <!-- Hint to scroll -->
                     <div class="absolute -bottom-12 left-1/2 transform -translate-x-1/2 text-brown/50 animate-bounce text-sm font-medium">
@@ -384,112 +384,6 @@
             </div>
         </div>
     </section>
-
-    <!-- Venue Modal -->
-    <div id="venue-modal" class="fixed inset-0 z-[100] hidden flex items-center justify-center">
-        <div class="modal-overlay absolute inset-0 bg-black/80 opacity-0 transition-opacity duration-300"></div>
-        <div class="modal-content absolute flex items-center justify-center p-4 w-full max-w-2xl transform scale-95 transition-transform duration-300">
-            <div class="bg-white w-full max-h-[90vh] overflow-y-auto rounded-2xl shadow-2xl relative">
-                <button onclick="closeModal('venue-modal')" class="absolute top-4 right-4 text-gray-500 hover:text-maroon z-10 bg-white rounded-full p-1">
-                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
-                </button>
-                
-                <div class="p-8 md:p-12">
-                    <div class="text-center mb-8">
-                        <span class="text-brown font-bold tracking-widest uppercase text-sm">For Venues</span>
-                        <h2 class="text-3xl md:text-4xl font-serif text-maroon mt-2 mb-4">Free To You, Priceless To Them</h2>
-                        <p class="text-gray-600">Drive goodwill as a partner in a purpose-led initiative at NO financial cost.</p>
-                    </div>
-
-                    <div class="space-y-8">
-                        <div class="flex gap-4">
-                            <div class="w-12 h-12 rounded-full bg-maroon/10 flex items-center justify-center flex-shrink-0 text-maroon font-bold text-xl">1</div>
-                            <div>
-                                <h4 class="text-xl font-bold text-darkred mb-2">Elevate Experience</h4>
-                                <p class="text-gray-600">Provide a dignity-driven amenity that strengthens your venue's reputation and customer loyalty.</p>
-                            </div>
-                        </div>
-
-                        <div class="flex gap-4">
-                            <div class="w-12 h-12 rounded-full bg-brown/10 flex items-center justify-center flex-shrink-0 text-brown font-bold text-xl">2</div>
-                            <div>
-                                <h4 class="text-xl font-bold text-darkred mb-2">Seamless Logistics</h4>
-                                <p class="text-gray-600">We provide stock calculated against your footfall and replenish as needed. You just provide the space.</p>
-                            </div>
-                        </div>
-
-                        <div class="flex gap-4">
-                            <div class="w-12 h-12 rounded-full bg-maroon/10 flex items-center justify-center flex-shrink-0 text-maroon font-bold text-xl">3</div>
-                            <div>
-                                <h4 class="text-xl font-bold text-darkred mb-2">Full Control</h4>
-                                <p class="text-gray-600">Every campaign partner is disclosed upfront. No pad is placed without your prior approval.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="mt-10 text-center">
-                        <a href="#contact" onclick="closeModal('venue-modal')" class="inline-block bg-maroon text-white px-8 py-3 rounded-full font-bold hover:bg-brown transition-colors">Become a Partner</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Brand Modal (Corrected Styling) -->
-    <div id="brand-modal" class="fixed inset-0 z-[100] hidden flex items-center justify-center">
-        <!-- Overlay: Dark background matching venue -->
-        <div class="modal-overlay absolute inset-0 bg-black/80 opacity-0 transition-opacity duration-300"></div>
-        <!-- Content: White background for readability -->
-        <div class="modal-content absolute flex items-center justify-center p-4 w-full max-w-2xl transform scale-95 transition-transform duration-300">
-            <div class="bg-white w-full max-h-[90vh] overflow-y-auto rounded-2xl shadow-2xl relative">
-                <button onclick="closeModal('brand-modal')" class="absolute top-4 right-4 text-gray-500 hover:text-maroon z-10 bg-white rounded-full p-1">
-                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
-                </button>
-                
-                <div class="p-8 md:p-12">
-                    <div class="text-center mb-8">
-                        <span class="text-maroon font-bold tracking-widest uppercase text-sm">For Brands</span>
-                        <h2 class="text-3xl md:text-4xl font-serif text-darkred mt-2 mb-4">From Impressions To Connections</h2>
-                        <p class="text-gray-600">Stop paying for ads people scroll past. Reach them where attention is guaranteed.</p>
-                    </div>
-
-                    <div class="grid md:grid-cols-3 gap-4 mb-8 text-center">
-                        <div class="bg-gray-50 p-4 rounded-xl shadow-sm border border-gray-100">
-                            <div class="text-2xl font-bold text-maroon mb-1">2 min+</div>
-                            <div class="text-xs text-gray-500 uppercase">Interaction Time</div>
-                        </div>
-                        <div class="bg-gray-50 p-4 rounded-xl shadow-sm border border-gray-100">
-                            <div class="text-2xl font-bold text-maroon mb-1">100%</div>
-                            <div class="text-xs text-gray-500 uppercase">Share of Voice</div>
-                        </div>
-                        <div class="bg-gray-50 p-4 rounded-xl shadow-sm border border-gray-100">
-                            <div class="text-2xl font-bold text-maroon mb-1">High</div>
-                            <div class="text-xs text-gray-500 uppercase">Brand Recall</div>
-                        </div>
-                    </div>
-
-                    <div class="space-y-6">
-                        <div>
-                            <h4 class="text-lg font-bold text-darkred flex items-center"><span class="w-2 h-2 bg-maroon rounded-full mr-2"></span>Attention</h4>
-                            <p class="text-gray-600 ml-4">240x longer dwell time than digital ads in a distraction-free moment.</p>
-                        </div>
-                        <div>
-                            <h4 class="text-lg font-bold text-darkred flex items-center"><span class="w-2 h-2 bg-brown rounded-full mr-2"></span>Conversion</h4>
-                            <p class="text-gray-600 ml-4">QR codes track every scan and click. Point-of-need marketing when wellness matters most.</p>
-                        </div>
-                        <div>
-                            <h4 class="text-lg font-bold text-darkred flex items-center"><span class="w-2 h-2 bg-maroon rounded-full mr-2"></span>Impact</h4>
-                            <p class="text-gray-600 ml-4">Consumers remember brands that "had their back." Build loyalty through social impact.</p>
-                        </div>
-                    </div>
-
-                    <div class="mt-10 text-center">
-                        <a href="#contact" onclick="closeModal('brand-modal')" class="inline-block bg-maroon text-white px-8 py-3 rounded-full font-bold hover:bg-brown transition-colors">Start Your Campaign</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <!-- Footer (#contact) -->
     <footer id="contact" class="bg-darkred text-cream py-16 px-6 relative z-40">
@@ -517,66 +411,35 @@
                 </div>
             </div>
         </div>
-        <div class="text-center mt-16 pt-8 border-t border-white/10 text-gray-500 text-sm">
+            <div class="text-center mt-16 pt-8 border-t border-white/10 text-gray-500 text-sm">
             &copy; 2023 PADS India. All rights reserved.
         </div>
     </footer>
 
     <!-- JavaScript Logic -->
     <script>
-        // Modal Logic
-        function openModal(modalId) {
-            const modal = document.getElementById(modalId);
-            if (!modal) return;
-            modal.classList.remove('hidden');
-            // Force flow reflow to trigger transition
-            void modal.offsetWidth; 
-            modal.classList.add('modal-active');
-            document.body.style.overflow = 'hidden'; 
-        }
-
-        function closeModal(modalId) {
-            const modal = document.getElementById(modalId);
-            if (!modal) return;
-            modal.classList.remove('modal-active');
-            
-            setTimeout(() => {
-                modal.classList.add('hidden');
-                document.body.style.overflow = '';
-            }, 300);
-        }
-
         document.addEventListener('DOMContentLoaded', () => {
-            // Close modal on outside click logic
-            document.querySelectorAll('.modal-overlay').forEach(overlay => {
-                overlay.addEventListener('click', function() {
-                    closeModal(this.parentElement.id);
-                });
-            });
-
             // 1. Mobile Menu Toggle
             const menuBtn = document.getElementById('menu-btn');
             const mobileMenu = document.getElementById('mobile-menu');
             const mobileLinks = document.querySelectorAll('.mobile-link');
             let isMenuOpen = false;
 
-            if(menuBtn && mobileMenu) {
-                menuBtn.addEventListener('click', () => {
-                    isMenuOpen = !isMenuOpen;
-                    if (isMenuOpen) {
-                        mobileMenu.classList.remove('translate-x-full');
-                    } else {
-                        mobileMenu.classList.add('translate-x-full');
-                    }
-                });
+            menuBtn.addEventListener('click', () => {
+                isMenuOpen = !isMenuOpen;
+                if (isMenuOpen) {
+                    mobileMenu.classList.remove('translate-x-full');
+                } else {
+                    mobileMenu.classList.add('translate-x-full');
+                }
+            });
 
-                mobileLinks.forEach(link => {
-                    link.addEventListener('click', () => {
-                        isMenuOpen = false;
-                        mobileMenu.classList.add('translate-x-full');
-                    });
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    isMenuOpen = false;
+                    mobileMenu.classList.add('translate-x-full');
                 });
-            }
+            });
 
             // 2. Navbar Scroll State
             const navbar = document.getElementById('navbar');
@@ -616,6 +479,7 @@
                         const radius = circle.r.baseVal.value;
                         const circumference = radius * 2 * Math.PI;
                         
+                        // Set offset based on data-percent
                         const percent = entry.target.dataset.percent || 75;
                         const offset = circumference - (percent / 100) * circumference;
                         
@@ -665,13 +529,11 @@
                         cardVenue.style.transform = `translate(${xTrans}%, ${yTrans}%) rotate(${rotation}deg)`;
                         cardVenue.style.opacity = opacity;
                         cardVenue.style.visibility = 'visible';
-                        cardVenue.style.pointerEvents = 'auto';
                     } else {
                         // Gone
                         cardVenue.style.transform = `translate(-200%, -100%) rotate(-40deg)`;
                         cardVenue.style.opacity = 0;
                         cardVenue.style.visibility = 'hidden';
-                        cardVenue.style.pointerEvents = 'none';
                     }
 
                     // --- Brand Card Animation (40% to 80%) ---
@@ -687,19 +549,16 @@
                         cardBrand.style.transform = `translate(${xTrans}%, ${yTrans}%) rotate(${rotation}deg)`;
                         cardBrand.style.opacity = opacity;
                         cardBrand.style.visibility = 'visible';
-                        cardBrand.style.pointerEvents = 'auto';
                     } else if (progress <= 0.40) {
                         // Reset (visible behind venue)
                         cardBrand.style.transform = `translate(-50%, -50%) rotate(0deg)`;
                         cardBrand.style.opacity = 1;
                         cardBrand.style.visibility = 'visible';
-                        cardBrand.style.pointerEvents = 'none';
                     } else {
                         // Gone
                          cardBrand.style.transform = `translate(200%, -100%) rotate(40deg)`;
                          cardBrand.style.opacity = 0;
                          cardBrand.style.visibility = 'hidden';
-                         cardBrand.style.pointerEvents = 'none';
                     }
 
                     // --- Final Text Reveal (80% to 100%) ---
@@ -707,14 +566,9 @@
                         const localProgress = (progress - 0.80) / 0.20; // 0 to 1
                         finalText.style.opacity = localProgress;
                         finalText.style.transform = `translateY(${20 - (localProgress * 20)}px)`; // Slide up 20px
-                        finalText.style.pointerEvents = 'auto';
-                        // Ensure z-index is high enough to click button
-                        finalText.style.zIndex = '100';
                     } else {
                         finalText.style.opacity = 0;
                         finalText.style.transform = `translateY(20px)`;
-                        finalText.style.pointerEvents = 'none';
-                        finalText.style.zIndex = '0';
                     }
                 });
             }
