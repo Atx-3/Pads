@@ -17,30 +17,26 @@
                     colors: {
                         maroon: '#8C1F2D',
                         cream: '#FDF8EE',
-                        beige: '#F5F5DC',
                         brown: '#8A796A',
                         darkred: '#450a0a',
                     },
                     fontFamily: {
-                        // Mapped "TSGTA" to Inter (Clean Sans-Serif Body)
-                        tsgta: ['"Inter"', 'sans-serif'],
-                        // Mapped "Telegraph" to Playfair Display (Editorial Serif Headings)
-                        telegraph: ['"Playfair Display"', 'serif'],
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Merriweather', 'serif'],
                     }
                 }
             }
         }
     </script>
 
-    <!-- Fonts: Loading Playfair Display (for Telegraph look) and Inter (for TSGTA look) -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:wght@600;700;900&display=swap" rel="stylesheet">
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet">
 
     <!-- Custom Styles -->
     <style>
         body {
             background-color: #FDF8EE; /* Cream Background */
             color: #450a0a;
-            font-family: 'Inter', sans-serif; /* Fallback */
         }
         
         /* Smooth Scroll Behavior */
@@ -52,36 +48,20 @@
         #navbar {
             transition: all 0.3s ease-in-out;
         }
-        
-        /* Scrolled State (Dark Red Background) */
         #navbar.scrolled {
-            background-color: #450a0a; 
+            background-color: #450a0a; /* Dark Red to ensure Cream text is visible */
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
             padding-top: 1rem;
             padding-bottom: 1rem;
         }
         
-        /* Dynamic Text Colors based on Scroll */
-        
-        /* 1. Logo Text "ads" */
-        /* Default (on Beige): Brown */
-        .logo-ads { color: #8A796A; transition: color 0.3s; }
-        /* Scrolled (on Dark Red): Cream */
-        #navbar.scrolled .logo-ads { color: #FDF8EE; }
-
-        /* 2. Nav Links */
-        /* Default (on Beige): Maroon */
-        .nav-link { color: #8C1F2D; transition: color 0.3s; }
-        .nav-link:hover { color: #8A796A; }
-        
-        /* Scrolled (on Dark Red): Cream */
-        #navbar.scrolled .nav-link { color: #FDF8EE; }
-        #navbar.scrolled .nav-link:hover { color: #8A796A; }
-
-        /* 3. Mobile Menu Button */
-        .menu-icon { stroke: #8C1F2D; transition: stroke 0.3s; }
-        #navbar.scrolled .menu-icon { stroke: #FDF8EE; }
-
+        /* Change link colors in scrolled state for contrast */
+        #navbar.scrolled a:not(.bg-maroon) {
+            color: #FDF8EE; /* Cream text for links on dark background */
+        }
+        #navbar.scrolled a:not(.bg-maroon):hover {
+            color: #8A796A; /* Brown hover */
+        }
 
         /* Animation Utilities */
         .fade-in-up {
@@ -142,71 +122,74 @@
         }
     </style>
 </head>
-<body class="font-tsgta antialiased overflow-x-hidden">
+<body class="font-sans antialiased overflow-x-hidden">
 
     <!-- Navigation -->
     <nav id="navbar" class="fixed w-full z-50 top-0 pt-6 pb-6 px-6 transition-all duration-300">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
-            <!-- Logo: P in Red, ads in Brown (Default) / Cream (Scrolled) -->
-            <a href="#home" class="flex items-baseline font-telegraph font-black tracking-tighter z-50 relative group">
-                <span class="text-4xl text-maroon">P</span>
-                <span class="text-3xl logo-ads font-tsgta font-bold">ads</span>
-                <span class="text-brown text-xl italic">.</span>
+            <!-- Logo: P in Red, ads in Cream (Lowercase) -->
+            <a href="#home" class="flex items-baseline font-bold font-serif tracking-tighter z-50 relative group">
+                <span class="text-3xl text-maroon">P</span>
+                <span class="text-2xl text-cream">ads</span>
+                <span class="text-brown text-lg italic">.</span>
             </a>
 
             <!-- Desktop Menu -->
-            <div class="hidden md:flex space-x-8 items-center font-tsgta">
-                <a href="#intro" class="nav-link font-bold text-lg">The Concept</a>
-                <a href="#problem" class="nav-link font-bold text-lg">Why</a>
-                <a href="#how-it-works" class="nav-link font-bold text-lg">Process</a>
-                <a href="#partner-scroll-section" class="nav-link font-bold text-lg">Partners</a>
-                <!-- CTA Button stays consistent -->
-                <a href="#contact" class="px-8 py-3 bg-maroon text-cream rounded-full hover:bg-brown transition-colors shadow-md hover:shadow-lg transform hover:-translate-y-0.5 duration-200 border border-cream/20 font-bold text-lg">
+            <div class="hidden md:flex space-x-8 items-center">
+                <a href="#intro" class="text-cream/90 hover:text-white transition-colors font-medium">The Concept</a>
+                <a href="#problem" class="text-cream/90 hover:text-white transition-colors font-medium">Why</a>
+                <a href="#how-it-works" class="text-cream/90 hover:text-white transition-colors font-medium">Process</a>
+                <a href="#partner-scroll-section" class="text-cream/90 hover:text-white transition-colors font-medium">Partners</a>
+                <a href="#contact" class="px-6 py-2 bg-maroon text-cream rounded-full hover:bg-brown transition-colors shadow-md hover:shadow-lg transform hover:-translate-y-0.5 duration-200 border border-cream/20">
                     Let's Connect
                 </a>
             </div>
 
             <!-- Mobile Menu Button -->
-            <button id="menu-btn" class="md:hidden focus:outline-none z-50 bg-white/20 p-2 rounded-md backdrop-blur-sm">
-                <svg class="w-8 h-8 menu-icon" fill="none" viewBox="0 0 24 24">
+            <button id="menu-btn" class="md:hidden text-maroon focus:outline-none z-50 bg-cream/10 p-2 rounded-md backdrop-blur-sm">
+                <svg class="w-8 h-8" fill="none" stroke="#FDF8EE" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
                 </svg>
             </button>
         </div>
 
         <!-- Mobile Menu Overlay -->
-        <div id="mobile-menu" class="fixed inset-0 bg-darkred transform translate-x-full transition-transform duration-300 md:hidden flex flex-col justify-center items-center space-y-8 z-40 font-telegraph">
-            <a href="#intro" class="text-3xl text-cream mobile-link font-bold">The Concept</a>
-            <a href="#problem" class="text-3xl text-cream mobile-link font-bold">Why</a>
-            <a href="#how-it-works" class="text-3xl text-cream mobile-link font-bold">Process</a>
-            <a href="#partner-scroll-section" class="text-3xl text-cream mobile-link font-bold">Partners</a>
-            <a href="#contact" class="text-3xl text-maroon bg-cream px-8 py-3 rounded-full mobile-link font-black font-tsgta">Let's Connect</a>
+        <div id="mobile-menu" class="fixed inset-0 bg-darkred transform translate-x-full transition-transform duration-300 md:hidden flex flex-col justify-center items-center space-y-8 z-40">
+            <a href="#intro" class="text-2xl text-cream font-serif mobile-link">The Concept</a>
+            <a href="#problem" class="text-2xl text-cream font-serif mobile-link">Why</a>
+            <a href="#how-it-works" class="text-2xl text-cream font-serif mobile-link">Process</a>
+            <a href="#partner-scroll-section" class="text-2xl text-cream font-serif mobile-link">Partners</a>
+            <a href="#contact" class="text-2xl text-maroon bg-cream px-6 py-2 rounded-full font-serif mobile-link font-bold">Let's Connect</a>
         </div>
     </nav>
 
-    <!-- Hero Section (#home) - Cream Background -->
-    <section id="home" class="min-h-screen bg-cream flex flex-col justify-center items-center relative overflow-hidden pt-20 pb-20">
-        
+    <!-- Hero Section (#home) -->
+    <section id="home" class="min-h-screen bg-darkred flex flex-col justify-center items-center relative overflow-hidden pt-20 pb-20">
+        <!-- Background Decor -->
+        <div class="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
+            <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" class="w-full h-full">
+                <path fill="#FDF8EE" d="M44.7,-76.4C58.9,-69.2,71.8,-59.1,81.6,-46.7C91.4,-34.3,98.1,-19.6,95.8,-5.8C93.5,8,82.2,20.9,71,31.6C59.8,42.3,48.7,50.8,37.2,57.5C25.7,64.2,13.8,69.1,1.4,66.7C-11,64.3,-23.8,54.6,-36.1,46.8C-48.4,39,-60.1,33.1,-68.6,23.6C-77.1,14.1,-82.3,1,-80.6,-11.2C-78.9,-23.4,-70.3,-34.7,-59.9,-43.4C-49.5,-52.1,-37.3,-58.2,-25.2,-67C-13.1,-75.8,1.1,-87.3,12.9,-82.3C24.7,-77.3,44.7,-76.4,44.7,-76.4Z" transform="translate(100 100)" />
+            </svg>
+        </div>
+
         <!-- Content Center -->
         <div class="relative z-10 flex flex-col items-center justify-center px-6 w-full max-w-5xl fade-in-up">
             
-            <!-- 1. Logo Image Placeholder (Wider aspect ratio) -->
-            <div class="w-1/3 max-w-1/3">
-               <!-- Changed placeholder to 400x120 for a wider, shorter look -->
+            <!-- 1. Logo Image Placeholder -->
+            <div class="mb-8 inline-block">
                <img 
                    src="logo.png" 
                    alt="Brand Logo" 
-                   class="w-72 h-auto object-contain rounded-lg transition-transform duration-500 hover:scale-105 mix-blend-multiply"
+                   class="w-56 h-auto object-contain rounded-lg transition-transform duration-500 hover:scale-105"
                >
             </div>
             
-            <!-- 2. Headline Image Placeholder (Shorter height) -->
-            <!-- Changed placeholder to 800x200 for a much shorter/flatter look -->
-            <div class="w-1/4 max-w-1/4">
+            <!-- 2. Headline Image Placeholder -->
+            <div class="w-full max-w-md">
                  <img 
                     src="home.png.png" 
                     alt="Main Headline" 
-                    class="w-full h-auto object-contain rounded-xl transition-transform duration-500 hover:scale-[1.02] mix-blend-multiply"
+                    class="w-full h-auto object-contain rounded-xl transition-transform duration-500 hover:scale-[1.02]"
                  >
             </div>
         </div>
@@ -217,44 +200,44 @@
         <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
             <!-- Text Content -->
             <div class="fade-in-up">
-                <h2 class="text-4xl md:text-6xl font-telegraph text-darkred mb-8 leading-tight font-black">
+                <h2 class="text-3xl md:text-5xl font-serif text-darkred mb-6 leading-tight">
                     As you are reading this...
                 </h2>
-                <div class="space-y-8 text-xl text-gray-800 leading-relaxed font-tsgta">
-                    <p class="font-bold italic text-maroon">Have you wondered what women do when they get their period in a public space?</p>
-                    <p class="font-semibold">If there are no pads, they make do.</p>
-                    <p class="font-bold text-2xl">Toilet paper isn't the solution, ACCESS is.</p>
+                <div class="space-y-6 text-lg text-gray-700 leading-relaxed">
+                    <p class="font-medium italic text-maroon">Have you wondered what women do when they get their period in a public space?</p>
+                    <p>If there are no pads, they make do.</p>
+                    <p class="font-bold">Toilet paper isn't the solution, ACCESS is.</p>
                 </div>
             </div>
 
             <!-- Animated Graphs -->
-            <div class="grid grid-cols-2 gap-8 font-tsgta">
+            <div class="grid grid-cols-2 gap-8">
                 <!-- Graph 1: 17% -->
                 <div class="flex flex-col items-center text-center fade-in-up stats-trigger" data-percent="17">
-                    <div class="relative w-48 h-48 mb-6">
+                    <div class="relative w-40 h-40 mb-4">
                         <svg class="w-full h-full transform" viewBox="0 0 120 120">
                             <circle class="text-gray-100" stroke-width="8" stroke="currentColor" fill="transparent" r="52" cx="60" cy="60" />
                             <circle class="text-maroon progress-ring__circle" stroke-width="8" stroke-linecap="round" stroke="currentColor" fill="transparent" r="52" cx="60" cy="60" stroke-dasharray="326.72" stroke-dashoffset="326.72" />
                         </svg>
                         <div class="absolute top-0 left-0 w-full h-full flex items-center justify-center flex-col">
-                            <span class="text-4xl font-black text-maroon font-telegraph">17%</span>
+                            <span class="text-3xl font-bold text-maroon">17%</span>
                         </div>
                     </div>
-                    <p class="text-lg font-bold text-gray-800 px-2">of the womenkind are on their period.</p>
+                    <p class="text-sm font-medium text-gray-700 px-2">of the womenkind are on their period.</p>
                 </div>
 
                 <!-- Graph 2: 50% -->
                 <div class="flex flex-col items-center text-center fade-in-up stats-trigger" style="transition-delay: 200ms;" data-percent="50">
-                    <div class="relative w-48 h-48 mb-6">
+                    <div class="relative w-40 h-40 mb-4">
                         <svg class="w-full h-full transform" viewBox="0 0 120 120">
                             <circle class="text-gray-100" stroke-width="8" stroke="currentColor" fill="transparent" r="52" cx="60" cy="60" />
                             <circle class="text-maroon progress-ring__circle" stroke-width="8" stroke-linecap="round" stroke="currentColor" fill="transparent" r="52" cx="60" cy="60" stroke-dasharray="326.72" stroke-dashoffset="326.72" />
                         </svg>
                         <div class="absolute top-0 left-0 w-full h-full flex items-center justify-center flex-col">
-                            <span class="text-4xl font-black text-maroon font-telegraph">50%</span>
+                            <span class="text-3xl font-bold text-maroon">50%</span>
                         </div>
                     </div>
-                    <p class="text-lg font-bold text-gray-800 px-2">of whom do not have access to sanitary pads.</p>
+                    <p class="text-sm font-medium text-gray-700 px-2">of whom do not have access to sanitary pads.</p>
                 </div>
             </div>
         </div>
@@ -266,7 +249,7 @@
             <!-- Image Left (UPDATED with IMG tag) -->
              <div class="order-2 md:order-1 flex justify-center fade-in-up">
                 <div class="bg-white p-6 rounded-2xl shadow-xl transform rotate-1 hover:rotate-0 transition-transform duration-500">
-                    <div class="w-full h-80 rounded-lg flex items-center justify-center overflow-hidden bg-cream/5">
+                    <div class="w-full h-64 rounded-lg flex items-center justify-center overflow-hidden bg-cream/5">
                         <!-- New Image Placeholder for Section 3 -->
                         <img 
                             src="the image.png" 
@@ -279,25 +262,25 @@
 
             <!-- Text Right -->
             <div class="order-1 md:order-2 fade-in-up">
-                <span class="text-maroon font-black tracking-widest uppercase text-base mb-4 block font-tsgta">The Solution</span>
-                <h2 class="text-4xl md:text-5xl font-telegraph text-darkred mb-8 leading-tight font-bold">
+                <span class="text-maroon font-bold tracking-widest uppercase text-sm mb-4 block">The Solution</span>
+                <h2 class="text-3xl md:text-4xl font-serif text-darkred mb-6 leading-tight">
                     We solve for that ACCESS.
                 </h2>
-                <div class="space-y-6 mb-8 text-xl text-gray-800 font-tsgta font-medium">
+                <div class="space-y-6 mb-8 text-lg text-gray-700">
                     <p>
-                        By turning sanitary pad packaging into an <span class="font-extrabold text-maroon">advertisement space</span>.
+                        By turning sanitary pad packaging into an <span class="font-bold text-maroon">advertisement space</span>.
                     </p>
                     <ul class="space-y-4">
                         <li class="flex items-start">
-                            <span class="text-maroon font-black mr-2">1.</span>
+                            <span class="text-maroon font-bold mr-2">1.</span>
                             <span>Brands pay to place their ads.</span>
                         </li>
                         <li class="flex items-start">
-                            <span class="text-maroon font-black mr-2">2.</span>
+                            <span class="text-maroon font-bold mr-2">2.</span>
                             <span>Women get access to free pads in public spaces.</span>
                         </li>
                         <li class="flex items-start">
-                            <span class="text-maroon font-black mr-2">3.</span>
+                            <span class="text-maroon font-bold mr-2">3.</span>
                             <span>They remember YOU for having <i>their</i> back.</span>
                         </li>
                     </ul>
@@ -309,89 +292,92 @@
     <!-- Process / How It Works (#how-it-works) -->
     <section id="how-it-works" class="py-24 px-6 bg-white border-t border-gray-100">
         <div class="max-w-6xl mx-auto">
-            <div class="text-center mb-20 fade-in-up">
-                <h2 class="text-5xl font-telegraph text-darkred mb-4 font-bold">What Is It That We Do?</h2>
-                <p class="text-brown tracking-widest uppercase text-base font-tsgta font-bold">From Wrapper to Report We Handle It All</p>
+            <div class="text-center mb-16 fade-in-up">
+                <h2 class="text-4xl font-serif text-darkred mb-2">What Is It That We Do?</h2>
+                <p class="text-brown tracking-widest uppercase text-sm">From Wrapper to Report We Handle It All</p>
             </div>
             
-            <div class="grid md:grid-cols-4 gap-8 font-tsgta">
+            <div class="grid md:grid-cols-4 gap-8">
                 <!-- Step 1 -->
-                <div class="relative fade-in-up p-8 bg-cream/30 rounded-xl hover:bg-cream transition-colors duration-300 border border-transparent hover:border-cream">
-                    <div class="w-14 h-14 bg-maroon text-white rounded-full flex items-center justify-center mb-6 text-2xl font-bold">1</div>
-                    <h4 class="text-xl font-bold text-darkred mb-3 font-telegraph">Production</h4>
-                    <p class="text-base font-medium text-gray-700">Co-create the ad and develop the custom packaging.</p>
+                <div class="relative fade-in-up p-6 bg-cream/30 rounded-xl hover:bg-cream transition-colors duration-300">
+                    <div class="w-12 h-12 bg-maroon text-white rounded-full flex items-center justify-center mb-4 text-lg font-bold">1</div>
+                    <h4 class="text-lg font-bold text-darkred mb-2">Production</h4>
+                    <p class="text-sm text-gray-600">Co-create the ad and develop the custom packaging.</p>
                 </div>
                 <!-- Step 2 -->
-                <div class="relative fade-in-up p-8 bg-cream/30 rounded-xl hover:bg-cream transition-colors duration-300 border border-transparent hover:border-cream" style="transition-delay: 100ms;">
-                    <div class="w-14 h-14 bg-brown text-white rounded-full flex items-center justify-center mb-6 text-2xl font-bold">2</div>
-                    <h4 class="text-xl font-bold text-darkred mb-3 font-telegraph">Placement</h4>
-                    <p class="text-base font-medium text-gray-700">Identify distribution spaces from our pool of venue partners.</p>
+                <div class="relative fade-in-up p-6 bg-cream/30 rounded-xl hover:bg-cream transition-colors duration-300" style="transition-delay: 100ms;">
+                    <div class="w-12 h-12 bg-brown text-white rounded-full flex items-center justify-center mb-4 text-lg font-bold">2</div>
+                    <h4 class="text-lg font-bold text-darkred mb-2">Placement</h4>
+                    <p class="text-sm text-gray-600">Identify distribution spaces from our pool of venue partners (cafes, campuses, etc).</p>
                 </div>
                 <!-- Step 3 -->
-                <div class="relative fade-in-up p-8 bg-cream/30 rounded-xl hover:bg-cream transition-colors duration-300 border border-transparent hover:border-cream" style="transition-delay: 200ms;">
-                    <div class="w-14 h-14 bg-maroon text-white rounded-full flex items-center justify-center mb-6 text-2xl font-bold">3</div>
-                    <h4 class="text-xl font-bold text-darkred mb-3 font-telegraph">Tracking</h4>
-                    <p class="text-base font-medium text-gray-700">We track stock movement and campaign performance.</p>
+                <div class="relative fade-in-up p-6 bg-cream/30 rounded-xl hover:bg-cream transition-colors duration-300" style="transition-delay: 200ms;">
+                    <div class="w-12 h-12 bg-maroon text-white rounded-full flex items-center justify-center mb-4 text-lg font-bold">3</div>
+                    <h4 class="text-lg font-bold text-darkred mb-2">Tracking</h4>
+                    <p class="text-sm text-gray-600">We track stock movement and campaign performance.</p>
                 </div>
                 <!-- Step 4 -->
-                <div class="relative fade-in-up p-8 bg-cream/30 rounded-xl hover:bg-cream transition-colors duration-300 border border-transparent hover:border-cream" style="transition-delay: 300ms;">
-                    <div class="w-14 h-14 bg-brown text-white rounded-full flex items-center justify-center mb-6 text-2xl font-bold">4</div>
-                    <h4 class="text-xl font-bold text-darkred mb-3 font-telegraph">Reporting</h4>
-                    <p class="text-base font-medium text-gray-700">Brands receive simple, transparent reporting to measure usage.</p>
+                <div class="relative fade-in-up p-6 bg-cream/30 rounded-xl hover:bg-cream transition-colors duration-300" style="transition-delay: 300ms;">
+                    <div class="w-12 h-12 bg-brown text-white rounded-full flex items-center justify-center mb-4 text-lg font-bold">4</div>
+                    <h4 class="text-lg font-bold text-darkred mb-2">Reporting</h4>
+                    <p class="text-sm text-gray-600">Brands receive simple, transparent reporting to measure usage and impact.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Creative Partner Section (Stacked Cards) -->
+    <!-- Container height allows scrolling: 300vh -> 3 screens worth of scroll -->
     <section id="partner-scroll-section" class="relative h-[300vh] bg-cream">
+        <!-- Sticky Wrapper: Keeps content fixed while user scrolls through the section -->
         <div class="sticky top-0 h-screen w-full flex flex-col items-center justify-center overflow-hidden perspective-1000">
             
-            <!-- Final Content -->
+            <!-- Final Content (Revealed after cards are gone) -->
             <div id="final-partner-text" class="absolute z-0 text-center opacity-0 transform translate-y-4 transition-all duration-500 ease-out">
-                <h2 class="text-5xl md:text-6xl font-telegraph text-maroon mb-6 font-black">Partner With Us</h2>
-                <p class="text-2xl text-gray-800 max-w-2xl mx-auto px-6 mb-10 font-tsgta font-medium">Join the movement creating dignity. Whether you're a venue or a brand, we have a place for you.</p>
-                <a href="#contact" class="inline-block bg-maroon text-cream px-10 py-4 rounded-full font-bold text-xl hover:bg-brown transition-colors shadow-xl cursor-pointer relative z-50 pointer-events-auto font-tsgta">Get in Touch</a>
+                <h2 class="text-4xl md:text-5xl font-serif text-maroon mb-4 font-bold">Partner With Us</h2>
+                <p class="text-xl text-gray-700 max-w-2xl mx-auto px-6 mb-8">Join the movement creating dignity. Whether you're a venue or a brand, we have a place for you.</p>
+                <!-- Changed button to anchor tag for correct navigation -->
+                <a href="#contact" class="inline-block bg-maroon text-cream px-8 py-3 rounded-full font-bold hover:bg-brown transition-colors shadow-lg cursor-pointer relative z-50 pointer-events-auto">Get in Touch</a>
             </div>
             
             <!-- Cards Stack Container -->
-            <div class="relative w-full max-w-md h-[550px] z-10 flex items-center justify-center">
+            <div class="relative w-full max-w-md h-[500px] z-10 flex items-center justify-center">
                 
-                <!-- Card 2: Brand Partner -->
-                <div id="card-brand" class="stacked-card absolute w-full h-full bg-maroon text-cream rounded-2xl shadow-2xl p-10 flex flex-col justify-between transform transition-transform duration-75 origin-bottom-right z-20" style="transform: translate(-50%, -50%) rotate(0deg);">
+                <!-- Card 2: Brand Partner (Bottom Card) -->
+                <div id="card-brand" class="stacked-card absolute w-full h-full bg-maroon text-cream rounded-2xl shadow-2xl p-8 flex flex-col justify-between transform transition-transform duration-75 origin-bottom-right z-20" style="transform: translate(-50%, -50%) rotate(0deg);">
                      <div class="text-center">
-                         <div class="inline-block p-4 bg-cream/10 rounded-full mb-6">
-                             <svg class="w-10 h-10 text-cream" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z"></path></svg>
+                         <div class="inline-block p-3 bg-cream/10 rounded-full mb-4">
+                             <svg class="w-8 h-8 text-cream" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z"></path></svg>
                          </div>
-                        <h3 class="text-4xl font-telegraph font-bold mb-3">Brand Partners</h3>
-                        <p class="text-base text-cream/80 font-bold uppercase mb-8 font-tsgta tracking-wider">Your Ad Delivers Dignity</p>
-                        <ul class="space-y-5 text-left text-cream/90 text-base mb-8 px-2 font-tsgta font-medium">
-                            <li class="flex items-start"><span class="text-white mr-3 text-xl">•</span>Reach women in premium venues.</li>
-                            <li class="flex items-start"><span class="text-white mr-3 text-xl">•</span>Distraction-free engagement.</li>
-                            <li class="flex items-start"><span class="text-white mr-3 text-xl">•</span>Transparent reporting & tracking.</li>
+                        <h3 class="text-3xl font-serif font-bold mb-2">Brand Partners</h3>
+                        <p class="text-sm text-cream/70 font-bold uppercase mb-6">Your Ad Delivers Dignity</p>
+                        <ul class="space-y-4 text-left text-cream/90 text-sm mb-8 px-4">
+                            <li class="flex items-start"><span class="text-white mr-2 text-lg">•</span>Reach women in premium venues.</li>
+                            <li class="flex items-start"><span class="text-white mr-2 text-lg">•</span>Distraction-free engagement.</li>
+                            <li class="flex items-start"><span class="text-white mr-2 text-lg">•</span>Transparent reporting & tracking.</li>
                         </ul>
                     </div>
-                    <button onclick="openModal('brand-modal')" class="block text-center w-full bg-cream text-maroon py-4 rounded-full font-bold text-lg hover:bg-white transition-colors shadow-lg relative z-50 pointer-events-auto cursor-pointer font-tsgta">Start Campaign</button>
+                    <button onclick="openModal('brand-modal')" class="block text-center w-full bg-cream text-maroon py-3 rounded-full font-bold hover:bg-white transition-colors shadow-lg relative z-50 pointer-events-auto cursor-pointer">Start Campaign</button>
                 </div>
 
-                <!-- Card 1: Venue Partner -->
-                <div id="card-venue" class="stacked-card absolute w-full h-full bg-white text-darkred rounded-2xl shadow-2xl p-10 flex flex-col justify-between transform transition-transform duration-75 origin-bottom-left z-30 border-t-8 border-brown" style="transform: translate(-50%, -50%) rotate(4deg);">
+                <!-- Card 1: Venue Partner (Top Card) -->
+                <div id="card-venue" class="stacked-card absolute w-full h-full bg-white text-darkred rounded-2xl shadow-2xl p-8 flex flex-col justify-between transform transition-transform duration-75 origin-bottom-left z-30 border-t-8 border-brown" style="transform: translate(-50%, -50%) rotate(4deg);">
                     <div class="text-center">
-                        <div class="inline-block p-4 bg-brown/10 rounded-full mb-6">
-                            <svg class="w-10 h-10 text-brown" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
+                        <div class="inline-block p-3 bg-brown/10 rounded-full mb-4">
+                            <svg class="w-8 h-8 text-brown" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
                         </div>
-                        <h3 class="text-4xl font-telegraph font-bold mb-3">Venue Partners</h3>
-                        <p class="text-base text-maroon font-bold uppercase mb-8 font-tsgta tracking-wider">Free to you, Priceless to them</p>
-                        <ul class="space-y-5 text-left text-gray-700 text-base mb-8 px-2 font-tsgta font-medium">
-                            <li class="flex items-start"><span class="text-brown mr-3 text-xl">•</span>Elevate customer experience.</li>
-                            <li class="flex items-start"><span class="text-brown mr-3 text-xl">•</span>Seamless Logistics: We handle refills.</li>
-                            <li class="flex items-start"><span class="text-brown mr-3 text-xl">•</span>Full Control: You approve campaigns.</li>
+                        <h3 class="text-3xl font-serif font-bold mb-2">Venue Partners</h3>
+                        <p class="text-sm text-maroon font-bold uppercase mb-6">Free to you, Priceless to them</p>
+                        <ul class="space-y-4 text-left text-gray-600 text-sm mb-8 px-4">
+                            <li class="flex items-start"><span class="text-brown mr-2 text-lg">•</span>Elevate customer experience.</li>
+                            <li class="flex items-start"><span class="text-brown mr-2 text-lg">•</span>Seamless Logistics: We handle refills.</li>
+                            <li class="flex items-start"><span class="text-brown mr-2 text-lg">•</span>Full Control: You approve campaigns.</li>
                         </ul>
                     </div>
-                    <button onclick="openModal('venue-modal')" class="block text-center w-full border-2 border-brown text-brown py-4 rounded-full hover:bg-brown hover:text-white transition-colors font-bold text-lg relative z-50 pointer-events-auto cursor-pointer font-tsgta">Provide Access</button>
+                    <button onclick="openModal('venue-modal')" class="block text-center w-full border-2 border-brown text-brown py-3 rounded-full hover:bg-brown hover:text-white transition-colors font-bold relative z-50 pointer-events-auto cursor-pointer">Provide Access</button>
                     
                     <!-- Hint to scroll -->
-                    <div class="absolute -bottom-12 left-1/2 transform -translate-x-1/2 text-brown/50 animate-bounce text-base font-bold font-tsgta">
+                    <div class="absolute -bottom-12 left-1/2 transform -translate-x-1/2 text-brown/50 animate-bounce text-sm font-medium">
                         Scroll to flip
                     </div>
                 </div>
@@ -404,99 +390,101 @@
         <div class="modal-overlay absolute inset-0 bg-black/80 opacity-0 transition-opacity duration-300"></div>
         <div class="modal-content absolute flex items-center justify-center p-4 w-full max-w-2xl transform scale-95 transition-transform duration-300">
             <div class="bg-white w-full max-h-[90vh] overflow-y-auto rounded-2xl shadow-2xl relative">
-                <button onclick="closeModal('venue-modal')" class="absolute top-6 right-6 text-gray-500 hover:text-maroon z-10 bg-white rounded-full p-2 hover:bg-gray-100 transition-colors">
+                <button onclick="closeModal('venue-modal')" class="absolute top-4 right-4 text-gray-500 hover:text-maroon z-10 bg-white rounded-full p-1">
                     <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
                 </button>
                 
-                <div class="p-10 md:p-14">
-                    <div class="text-center mb-10">
-                        <span class="text-brown font-bold tracking-widest uppercase text-base font-tsgta">For Venues</span>
-                        <h2 class="text-4xl md:text-5xl font-telegraph text-maroon mt-3 mb-4 font-bold">Free To You, Priceless To Them</h2>
-                        <p class="text-gray-700 font-tsgta text-lg">Drive goodwill as a partner in a purpose-led initiative at NO financial cost.</p>
+                <div class="p-8 md:p-12">
+                    <div class="text-center mb-8">
+                        <span class="text-brown font-bold tracking-widest uppercase text-sm">For Venues</span>
+                        <h2 class="text-3xl md:text-4xl font-serif text-maroon mt-2 mb-4">Free To You, Priceless To Them</h2>
+                        <p class="text-gray-600">Drive goodwill as a partner in a purpose-led initiative at NO financial cost.</p>
                     </div>
 
-                    <div class="space-y-10 font-tsgta">
-                        <div class="flex gap-6">
-                            <div class="w-14 h-14 rounded-full bg-maroon/10 flex items-center justify-center flex-shrink-0 text-maroon font-bold text-2xl">1</div>
+                    <div class="space-y-8">
+                        <div class="flex gap-4">
+                            <div class="w-12 h-12 rounded-full bg-maroon/10 flex items-center justify-center flex-shrink-0 text-maroon font-bold text-xl">1</div>
                             <div>
-                                <h4 class="text-2xl font-bold text-darkred mb-2 font-telegraph">Elevate Experience</h4>
-                                <p class="text-gray-600 text-lg">Provide a dignity-driven amenity that strengthens your venue's reputation.</p>
+                                <h4 class="text-xl font-bold text-darkred mb-2">Elevate Experience</h4>
+                                <p class="text-gray-600">Provide a dignity-driven amenity that strengthens your venue's reputation and customer loyalty.</p>
                             </div>
                         </div>
 
-                        <div class="flex gap-6">
-                            <div class="w-14 h-14 rounded-full bg-brown/10 flex items-center justify-center flex-shrink-0 text-brown font-bold text-2xl">2</div>
+                        <div class="flex gap-4">
+                            <div class="w-12 h-12 rounded-full bg-brown/10 flex items-center justify-center flex-shrink-0 text-brown font-bold text-xl">2</div>
                             <div>
-                                <h4 class="text-2xl font-bold text-darkred mb-2 font-telegraph">Seamless Logistics</h4>
-                                <p class="text-gray-600 text-lg">We provide stock calculated against your footfall and replenish as needed.</p>
+                                <h4 class="text-xl font-bold text-darkred mb-2">Seamless Logistics</h4>
+                                <p class="text-gray-600">We provide stock calculated against your footfall and replenish as needed. You just provide the space.</p>
                             </div>
                         </div>
 
-                        <div class="flex gap-6">
-                            <div class="w-14 h-14 rounded-full bg-maroon/10 flex items-center justify-center flex-shrink-0 text-maroon font-bold text-2xl">3</div>
+                        <div class="flex gap-4">
+                            <div class="w-12 h-12 rounded-full bg-maroon/10 flex items-center justify-center flex-shrink-0 text-maroon font-bold text-xl">3</div>
                             <div>
-                                <h4 class="text-2xl font-bold text-darkred mb-2 font-telegraph">Full Control</h4>
-                                <p class="text-gray-600 text-lg">Every campaign partner is disclosed upfront. No pad is placed without approval.</p>
+                                <h4 class="text-xl font-bold text-darkred mb-2">Full Control</h4>
+                                <p class="text-gray-600">Every campaign partner is disclosed upfront. No pad is placed without your prior approval.</p>
                             </div>
                         </div>
                     </div>
 
-                    <div class="mt-12 text-center">
-                        <a href="#contact" onclick="closeModal('venue-modal')" class="inline-block bg-maroon text-white px-10 py-4 rounded-full font-bold text-lg hover:bg-brown transition-colors font-tsgta">Become a Partner</a>
+                    <div class="mt-10 text-center">
+                        <a href="#contact" onclick="closeModal('venue-modal')" class="inline-block bg-maroon text-white px-8 py-3 rounded-full font-bold hover:bg-brown transition-colors">Become a Partner</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Brand Modal -->
+    <!-- Brand Modal (Corrected Styling) -->
     <div id="brand-modal" class="fixed inset-0 z-[100] hidden flex items-center justify-center">
+        <!-- Overlay: Dark background matching venue -->
         <div class="modal-overlay absolute inset-0 bg-black/80 opacity-0 transition-opacity duration-300"></div>
+        <!-- Content: White background for readability -->
         <div class="modal-content absolute flex items-center justify-center p-4 w-full max-w-2xl transform scale-95 transition-transform duration-300">
             <div class="bg-white w-full max-h-[90vh] overflow-y-auto rounded-2xl shadow-2xl relative">
-                <button onclick="closeModal('brand-modal')" class="absolute top-6 right-6 text-gray-500 hover:text-maroon z-10 bg-white rounded-full p-2 hover:bg-gray-100 transition-colors">
+                <button onclick="closeModal('brand-modal')" class="absolute top-4 right-4 text-gray-500 hover:text-maroon z-10 bg-white rounded-full p-1">
                     <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
                 </button>
                 
-                <div class="p-10 md:p-14">
-                    <div class="text-center mb-10">
-                        <span class="text-maroon font-bold tracking-widest uppercase text-base font-tsgta">For Brands</span>
-                        <h2 class="text-4xl md:text-5xl font-telegraph text-darkred mt-3 mb-4 font-bold">From Impressions To Connections</h2>
-                        <p class="text-gray-700 font-tsgta text-lg">Stop paying for ads people scroll past. Reach them where attention is guaranteed.</p>
+                <div class="p-8 md:p-12">
+                    <div class="text-center mb-8">
+                        <span class="text-maroon font-bold tracking-widest uppercase text-sm">For Brands</span>
+                        <h2 class="text-3xl md:text-4xl font-serif text-darkred mt-2 mb-4">From Impressions To Connections</h2>
+                        <p class="text-gray-600">Stop paying for ads people scroll past. Reach them where attention is guaranteed.</p>
                     </div>
 
-                    <div class="grid md:grid-cols-3 gap-6 mb-10 text-center font-tsgta">
-                        <div class="bg-gray-50 p-6 rounded-xl shadow-sm border border-gray-100">
-                            <div class="text-3xl font-bold text-maroon mb-2 font-telegraph">2 min+</div>
-                            <div class="text-sm text-gray-500 uppercase font-bold">Interaction</div>
+                    <div class="grid md:grid-cols-3 gap-4 mb-8 text-center">
+                        <div class="bg-gray-50 p-4 rounded-xl shadow-sm border border-gray-100">
+                            <div class="text-2xl font-bold text-maroon mb-1">2 min+</div>
+                            <div class="text-xs text-gray-500 uppercase">Interaction Time</div>
                         </div>
-                        <div class="bg-gray-50 p-6 rounded-xl shadow-sm border border-gray-100">
-                            <div class="text-3xl font-bold text-maroon mb-2 font-telegraph">100%</div>
-                            <div class="text-sm text-gray-500 uppercase font-bold">Share of Voice</div>
+                        <div class="bg-gray-50 p-4 rounded-xl shadow-sm border border-gray-100">
+                            <div class="text-2xl font-bold text-maroon mb-1">100%</div>
+                            <div class="text-xs text-gray-500 uppercase">Share of Voice</div>
                         </div>
-                        <div class="bg-gray-50 p-6 rounded-xl shadow-sm border border-gray-100">
-                            <div class="text-3xl font-bold text-maroon mb-2 font-telegraph">High</div>
-                            <div class="text-sm text-gray-500 uppercase font-bold">Brand Recall</div>
-                        </div>
-                    </div>
-
-                    <div class="space-y-8 font-tsgta">
-                        <div>
-                            <h4 class="text-xl font-bold text-darkred flex items-center font-telegraph"><span class="w-3 h-3 bg-maroon rounded-full mr-3"></span>Attention</h4>
-                            <p class="text-gray-700 ml-6 text-lg">240x longer dwell time than digital ads in a distraction-free moment.</p>
-                        </div>
-                        <div>
-                            <h4 class="text-xl font-bold text-darkred flex items-center font-telegraph"><span class="w-3 h-3 bg-brown rounded-full mr-3"></span>Conversion</h4>
-                            <p class="text-gray-700 ml-6 text-lg">QR codes track every scan and click. Point-of-need marketing when wellness matters most.</p>
-                        </div>
-                        <div>
-                            <h4 class="text-xl font-bold text-darkred flex items-center font-telegraph"><span class="w-3 h-3 bg-maroon rounded-full mr-3"></span>Impact</h4>
-                            <p class="text-gray-700 ml-6 text-lg">Consumers remember brands that "had their back." Build loyalty through social impact.</p>
+                        <div class="bg-gray-50 p-4 rounded-xl shadow-sm border border-gray-100">
+                            <div class="text-2xl font-bold text-maroon mb-1">High</div>
+                            <div class="text-xs text-gray-500 uppercase">Brand Recall</div>
                         </div>
                     </div>
 
-                    <div class="mt-12 text-center">
-                        <a href="#contact" onclick="closeModal('brand-modal')" class="inline-block bg-maroon text-white px-10 py-4 rounded-full font-bold text-lg hover:bg-brown transition-colors font-tsgta">Start Your Campaign</a>
+                    <div class="space-y-6">
+                        <div>
+                            <h4 class="text-lg font-bold text-darkred flex items-center"><span class="w-2 h-2 bg-maroon rounded-full mr-2"></span>Attention</h4>
+                            <p class="text-gray-600 ml-4">240x longer dwell time than digital ads in a distraction-free moment.</p>
+                        </div>
+                        <div>
+                            <h4 class="text-lg font-bold text-darkred flex items-center"><span class="w-2 h-2 bg-brown rounded-full mr-2"></span>Conversion</h4>
+                            <p class="text-gray-600 ml-4">QR codes track every scan and click. Point-of-need marketing when wellness matters most.</p>
+                        </div>
+                        <div>
+                            <h4 class="text-lg font-bold text-darkred flex items-center"><span class="w-2 h-2 bg-maroon rounded-full mr-2"></span>Impact</h4>
+                            <p class="text-gray-600 ml-4">Consumers remember brands that "had their back." Build loyalty through social impact.</p>
+                        </div>
+                    </div>
+
+                    <div class="mt-10 text-center">
+                        <a href="#contact" onclick="closeModal('brand-modal')" class="inline-block bg-maroon text-white px-8 py-3 rounded-full font-bold hover:bg-brown transition-colors">Start Your Campaign</a>
                     </div>
                 </div>
             </div>
@@ -504,32 +492,32 @@
     </div>
 
     <!-- Footer (#contact) -->
-    <footer id="contact" class="bg-darkred text-cream py-20 px-6 relative z-40">
+    <footer id="contact" class="bg-darkred text-cream py-16 px-6 relative z-40">
         <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
             <!-- Brand & Info -->
             <div>
-                <h3 class="flex items-baseline font-telegraph font-black mb-6">
-                    <span class="text-5xl text-maroon">P</span>
-                    <span class="text-3xl text-cream font-tsgta font-bold">ads</span>.
+                <h3 class="flex items-baseline font-serif font-bold mb-4">
+                    <span class="text-3xl text-maroon">P</span>
+                    <span class="text-2xl text-cream">ads</span>.
                 </h3>
-                <p class="text-gray-400 mb-8 max-w-md font-tsgta text-lg">The first ad-funded free sanitary pads in India. Turning packaging into a force for good.</p>
+                <p class="text-gray-400 mb-6 max-w-md">The first ad-funded free sanitary pads in India. Turning packaging into a force for good.</p>
             </div>
 
             <!-- Contact Details -->
-            <div class="md:text-right font-tsgta">
-                <h4 class="font-bold text-3xl mb-6 font-telegraph">Let's Connect</h4>
-                <div class="space-y-4">
-                    <a href="mailto:drishti@qadirahygiene.com" class="block text-gray-300 hover:text-white transition-colors text-xl font-medium">drishti@qadirahygiene.com</a>
-                    <a href="mailto:projectqadira2020@gmail.com" class="block text-gray-400 hover:text-white transition-colors text-lg">projectqadira2020@gmail.com</a>
+            <div class="md:text-right">
+                <h4 class="font-bold text-xl mb-4">Let's Connect</h4>
+                <div class="space-y-2">
+                    <a href="mailto:drishti@qadirahygiene.com" class="block text-gray-300 hover:text-white transition-colors text-lg">drishti@qadirahygiene.com</a>
+                    <a href="mailto:projectqadira2020@gmail.com" class="block text-gray-400 hover:text-white transition-colors">projectqadira2020@gmail.com</a>
                 </div>
-                <div class="mt-10 inline-flex space-x-6">
+                <div class="mt-8 inline-flex space-x-4">
                     <!-- Social Placeholders -->
-                    <div class="w-12 h-12 border-2 border-white/20 rounded-full flex items-center justify-center hover:bg-white hover:text-maroon cursor-pointer transition-colors font-bold">in</div>
-                    <div class="w-12 h-12 border-2 border-white/20 rounded-full flex items-center justify-center hover:bg-white hover:text-maroon cursor-pointer transition-colors font-bold">ig</div>
+                    <div class="w-10 h-10 border border-white/20 rounded-full flex items-center justify-center hover:bg-white hover:text-maroon cursor-pointer transition-colors">in</div>
+                    <div class="w-10 h-10 border border-white/20 rounded-full flex items-center justify-center hover:bg-white hover:text-maroon cursor-pointer transition-colors">ig</div>
                 </div>
             </div>
         </div>
-        <div class="text-center mt-20 pt-8 border-t border-white/10 text-gray-500 text-base font-tsgta font-medium">
+        <div class="text-center mt-16 pt-8 border-t border-white/10 text-gray-500 text-sm">
             &copy; 2023 PADS India. All rights reserved.
         </div>
     </footer>
@@ -720,6 +708,7 @@
                         finalText.style.opacity = localProgress;
                         finalText.style.transform = `translateY(${20 - (localProgress * 20)}px)`; // Slide up 20px
                         finalText.style.pointerEvents = 'auto';
+                        // Ensure z-index is high enough to click button
                         finalText.style.zIndex = '100';
                     } else {
                         finalText.style.opacity = 0;
